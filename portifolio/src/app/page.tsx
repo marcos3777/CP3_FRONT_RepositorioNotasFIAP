@@ -76,7 +76,7 @@ export default function Home() {
           </table>
           {selectedCard === "Marcos Vinicius" && (
             <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/marcos"}>CP</button>
               <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
               <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
             </div>
@@ -110,7 +110,7 @@ export default function Home() {
           </table>
           {selectedCard === "Richardy B." && (
             <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/richardy"}>CP</button>
               <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
               <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
             </div>
