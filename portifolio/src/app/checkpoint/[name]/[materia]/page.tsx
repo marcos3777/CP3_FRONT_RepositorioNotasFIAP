@@ -4,6 +4,7 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TipoProva } from '@/types/types';
+import Link from 'next/link';
 
 export default function CheckpointDetailsPage() {
   const { name, materia } = useParams();
@@ -69,7 +70,7 @@ export default function CheckpointDetailsPage() {
                 <div className="flex justify-between">
                   <p className="text-lg font-bold">Nota {item.note}</p>
                   <div className="flex space-x-4">
-                    <button className="text-blue-500 underline">Edit</button>
+                    <Link href={`/checkpoint/${name}/${materia}/${item.id}`} className="text-blue-500 underline">Edit</Link>
                     <button className="text-blue-500 underline">Add</button>
                   </div>
                 </div>
