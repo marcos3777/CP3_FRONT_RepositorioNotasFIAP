@@ -35,8 +35,8 @@ export default function CheckpointDetailsPage() {
           );
         });
 
-        const semestre1 = filteredData.filter((item) => item.semestre === 1);
-        const semestre2 = filteredData.filter((item) => item.semestre === 2);
+        const semestre1 = filteredData.filter((item) => item.semestre === '1');
+        const semestre2 = filteredData.filter((item) => item.semestre === '2');
 
         setSemestre1Data(semestre1);
         setSemestre2Data(semestre2);
@@ -93,7 +93,7 @@ export default function CheckpointDetailsPage() {
                 <div className="flex justify-between">
                   <p className="text-lg font-bold">Nota {item.note}</p>
                   <div className="flex space-x-4">
-                    <button className="text-blue-500 underline">Edit</button>
+                  <Link href={`/checkpoint/${name}/${materia}/${item.id}`} className="text-blue-500 underline">Edit</Link>
                     <button className="text-blue-500 underline">Add</button>
                   </div>
                 </div>
