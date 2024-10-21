@@ -16,7 +16,7 @@ export default function CheckpointMateriaPage() {
   }, [name]);
 
   const materias = [
-    'ARTIFICIAL INTELLIGENCE & CHATBOT',
+    'ARTIFICIAL INTELLIGENCE AND CHATBOT',
     'DOMAIN DRIVEN DESIGN USING JAVA',
     'BUILDING RELATIONAL DATABASE',
     'FRONT-END DESIGN ENGINEERING',
@@ -32,7 +32,7 @@ export default function CheckpointMateriaPage() {
       </header>
       <main className="flex flex-wrap justify-center gap-8">
         {materias.map((materia) => (
-          <Link key={materia} href={`/checkpoint/${encodeURIComponent(materia.toLowerCase().replace(/\s+/g, '-'))}`} passHref>
+          <Link key={materia} href={`/checkpoint/marcos/${encodeURIComponent(materia.toLowerCase().replace(/\s+/g, '-'))}`} passHref>
             <div className="bg-white px-6 py-4 rounded-lg shadow-md text-center cursor-pointer w-72 hover:bg-gray-200 transition-all">
               <p className="text-lg font-bold">{materia}</p>
             </div>
