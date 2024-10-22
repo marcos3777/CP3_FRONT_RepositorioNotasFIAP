@@ -23,6 +23,27 @@ export default function Page() {
   const [semestre1Data, setSemestre1Data] = useState<Data[]>([]);
   const [semestre2Data, setSemestre2Data] = useState<Data[]>([]);
 
+  const participants = [
+    {
+      name: 'Marcos Vinicius',
+      image: '/images/participants/marcos-vinicius.jpg',
+    },
+    {
+      name: 'Richard',
+      image: '/images/participants/richard.jpg',
+    },
+    {
+      name: 'Heinrique',
+      image: '/images/participants/heinrique.jpg',
+    },
+    {
+      name: 'Pedro',
+      image: '/images/participants/pedro.jpg',
+    },
+  ];
+
+  
+
   const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
