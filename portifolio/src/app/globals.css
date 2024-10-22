@@ -4,6 +4,8 @@
 
 @layer components{
 
+    
+
     .form{
         @apply max-w-sm mx-auto;
          
@@ -28,8 +30,8 @@
         @apply  bg-blue-1000 text-white text-2xl font-bold relative min-h-screen bg-gradient-to-r from-customBlue to-blue-900;
     }
 
-    .rodape{
-        @apply  bg-blue-1000 text-white text-center absolute bottom-0 w-full h-24 bg-gradient-to-r from-customBlue to-blue-900;
+    .rodape {
+        @apply bg-blue-1000 text-white text-center w-full h-24 bg-gradient-to-r from-customBlue to-blue-900;
     }
 
     .content-wrap{

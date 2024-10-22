@@ -1,190 +1,179 @@
-// pages/index.tsx
-
+// app/page.tsx
 "use client";
-import { useEffect, useState } from "react";
-import { TipoProva } from '@/types/types';
 
-export default function Home() {
-  const [lista, setLista] = useState<TipoProva[]>([]);
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
-  useEffect(() => {
-    const chamadaDaApi = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/base-route");
-        const dados = await response.json();
-        setLista(dados);
-      } catch (error) {
-        console.error("Erro ao buscar dados da API:", error);
-      }
-    };
+export default function Page() {
+  interface Data {
+    id: number;
+    name: string;
+    tipo: string;
+    materia: string;
+    title: string;
+    date: string;
+    feedback: string;
+    note: number;
+    semestre: string;
+  }
 
-    chamadaDaApi();
-  }, []);
+  const [selectedName, setSelectedName] = useState('');
+  const [selectedProva, setSelectedProva] = useState('');
+  const [selectedMateria, setSelectedMateria] = useState('');
+  const [semestre1Data, setSemestre1Data] = useState<Data[]>([]);
+  const [semestre2Data, setSemestre2Data] = useState<Data[]>([]);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (!target.closest(".card")) {
-        setSelectedCard(null);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro'];
+  const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
+  const materias = [
+    'ARTIFICIAL INTELLIGENCE AND CHATBOT',
+    'DOMAIN DRIVEN DESIGN USING JAVA',
+    'BUILDING RELATIONAL DATABASE',
+    'FRONT-END DESIGN ENGINEERING',
+    'COMPUTATIONAL THINKING USING PYTHON',
+    'SOFTWARE ENGINEERING AND BUSINESS MODEL',
+  ];
 
-  const calcularMedia = (nome: string, tipo: string) => {
-    const provasFiltradas = lista.filter((prova) => prova.name === nome && prova.tipo === tipo);
-    const somaNotas = provasFiltradas.reduce((soma, prova) => soma + prova.note, 0);
-    return provasFiltradas.length > 0 ? (somaNotas / provasFiltradas.length).toFixed(1) : "-";
+  const fetchData = async () => {
+    const response = await fetch('/api/base-route');
+    const data: Data[] = await response.json();
+
+    const semestre1 = data.filter(
+      (item) =>
+        item.name === selectedName &&
+        item.tipo === selectedProva.toLowerCase() &&
+        item.materia === selectedMateria &&
+        item.semestre === '1'
+    );
+    const semestre2 = data.filter(
+      (item) =>
+        item.name === selectedName &&
+        item.tipo === selectedProva.toLowerCase() &&
+        item.materia === selectedMateria &&
+        item.semestre === '2'
+    );
+
+    setSemestre1Data(semestre1);
+    setSemestre2Data(semestre2);
   };
 
-  const handleCardClick = (name: string) => {
-    setSelectedCard(selectedCard === name ? null : name);
-  };
+  useEffect(() => {
+    if (selectedName && selectedProva && selectedMateria) {
+      fetchData();
+    }
+  }, [selectedName, selectedProva, selectedMateria]);
 
   return (
-    <div className="min-h-screen bg-gray-400">
-      {/* Main Content */}
-      <main className="flex flex-wrap justify-center gap-10 p-10">
-        {/* Card 1 */}
-        <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
-          onClick={() => handleCardClick("Marcos Vinicius")}
+    <div className="flex flex-col items-center bg-gray-200 min-h-screen">
+      {/* Cabeçalho com Dropdowns */}
+      <div className="flex justify-between w-full p-4 bg-gray-400">
+        <select
+          className="p-2 border rounded"
+          value={selectedName}
+          onChange={(e) => setSelectedName(e.target.value)}
         >
-          <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
-          </div>
-          <h2 className="text-xl font-bold mb-2">Marcos V.</h2>
-          <table className="mx-auto bg-gray-300 mb-4">
-            <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "checkpoint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "Sprint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "global")}</td>
-              </tr>
-            </tbody>
-          </table>
-          {selectedCard === "Marcos Vinicius" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/marcos"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
-        </div>
+          <option value="">Nome</option>
+          {nomes.map((nome) => (
+            <option key={nome} value={nome}>
+              {nome}
+            </option>
+          ))}
+        </select>
 
-        {/* Card 2 */}
-        <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
-          onClick={() => handleCardClick("Richardy B.")}
+        <select
+          className="p-2 border rounded"
+          value={selectedProva}
+          onChange={(e) => setSelectedProva(e.target.value)}
         >
-          <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
-          </div>
-          <h2 className="text-xl font-bold mb-2">Richardy B.</h2>
-          <table className="mx-auto bg-gray-300 mb-4">
-            <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "checkpoint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "Sprint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "global")}</td>
-              </tr>
-            </tbody>
-          </table>
-          {selectedCard === "Richardy B." && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/richardy"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
-        </div>
+          <option value="">Provas</option>
+          {provas.map((prova) => (
+            <option key={prova} value={prova}>
+              {prova}
+            </option>
+          ))}
+        </select>
 
-        {/* Card 3 */}
-        <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
-          onClick={() => handleCardClick("Pedro Bergara")}
+        <select
+          className="p-2 border rounded"
+          value={selectedMateria}
+          onChange={(e) => setSelectedMateria(e.target.value)}
         >
-          <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
-          </div>
-          <h2 className="text-xl font-bold mb-2">Pedro Bergara</h2>
-          <table className="mx-auto bg-gray-300 mb-4">
-            <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "checkpoint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "Sprint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "global")}</td>
-              </tr>
-            </tbody>
-          </table>
-          {selectedCard === "Pedro Bergara" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
-        </div>
+          <option value="">Matéria</option>
+          {materias.map((materia) => (
+            <option key={materia} value={materia}>
+              {materia}
+            </option>
+          ))}
+        </select>
+      </div>
 
-        {/* Card 4 */}
-        <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
-          onClick={() => handleCardClick("Henrique Izzi")}
-        >
-          <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+      {/* Renderização Condicional */}
+      {selectedName && selectedProva && selectedMateria ? (
+        // Conteúdo exibido após as seleções serem feitas
+        <div className="flex w-full justify-around p-8">
+          {/* Semestre 1 */}
+          <div className="bg-white p-4 rounded shadow-md w-1/2">
+            <h2 className="text-center font-bold text-lg">Semestre 1</h2>
+            {semestre1Data.length > 0 ? (
+              semestre1Data.map((item) => (
+                <div key={item.id} className="border p-4 m-2 relative">
+                  <Link
+                    href={`/edit/${item.id}`}
+                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                  >
+                    Editar
+                  </Link>
+                  <h3 className="font-bold">{item.title}</h3>
+                  <p>{item.date}</p>
+                  <p>Feedback: {item.feedback}</p>
+                  <p>Nota: {item.note}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">Nenhum dado disponível para o Semestre 1.</p>
+            )}
           </div>
-          <h2 className="text-xl font-bold mb-2">Henrique Izzi</h2>
-          <table className="mx-auto bg-gray-300 mb-4">
-            <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "checkpoint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "Sprint")}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "global")}</td>
-              </tr>
-            </tbody>
-          </table>
-          {selectedCard === "Henrique Izzi" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
+
+          {/* Semestre 2 */}
+          <div className="bg-white p-4 rounded shadow-md w-1/2">
+            <h2 className="text-center font-bold text-lg">Semestre 2</h2>
+            {semestre2Data.length > 0 ? (
+              semestre2Data.map((item) => (
+                <div key={item.id} className="border p-4 m-2 relative">
+                  <Link
+                    href={`/edit/${item.id}`}
+                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                  >
+                    Editar
+                  </Link>
+                  <h3 className="font-bold">{item.title}</h3>
+                  <p>{item.date}</p>
+                  <p>Feedback: {item.feedback}</p>
+                  <p>Nota: {item.note}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">Nenhum dado disponível para o Semestre 2.</p>
+            )}
+          </div>
         </div>
-      </main>
+      ) : (
+        // Conteúdo caso nada seja selecionado 
+        <div className="flex flex-col items-center mt-16 text-center px-4">
+          <h1 className="text-3xl font-bold mb-4">Bem-vindo ao Sistema de Notas</h1>
+          <p className="text-lg text-gray-700 mb-8">
+            Para visualizar os dados das provas, por favor selecione o <strong>Nome</strong>, <strong>Prova</strong> e <strong>Matéria</strong> nos menus acima.
+          </p>
+          <img  //remover tag img e adicionar Image do next (isso se encontrar alguma imagem legal)
+            src="/images/welcome.svg"
+            alt="Bem-vindo"
+            className="w-1/2 max-w-md mb-8"
+          />
+          <p className="text-gray-600">
+            Aplicação ainda em desenvolvimento. 
+          </p>
+        </div>
+      )}
     </div>
   );
 }
