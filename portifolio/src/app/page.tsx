@@ -44,7 +44,7 @@ export default function Page() {
 
   
 
-  const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro'];
+  const nomes = ['Marcos Vinicius', 'Richardy Borges ', 'Henrique Izzi', 'Pedro Bergara']; //Nomes para dropdown para colocar igual no json
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
