@@ -6,7 +6,7 @@
     "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
     "title": "CP1 - ChatBot1",
     "date": "2021-01-01",
-    "feedback": "Muito bom",
+    "feedback": "ruimm",
     "note": "5",
     "semestre": "1"
   },
@@ -406,7 +406,6 @@
     "note": "10",
     "semestre": "1"
   },
-
   {
     "id": 38,
     "name": "Marcos Vinicius",
@@ -461,6 +460,27 @@
     "feedback": "Muito bom",
     "note": 8,
     "semestre": "2"
+  },
+  {
+    "name": "Marcos Vinicius",
+    "tipo": "globalsolution",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "Teste",
+    "date": "2024-10-08",
+    "feedback": "teste",
+    "note": 8,
+    "semestre": "1",
+    "id": 43
+  },
+  {
+    "name": "Marcos Vinicius",
+    "tipo": "globalsolution",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "TesteT",
+    "date": "2024-10-23",
+    "feedback": "TesteT",
+    "note": 10,
+    "semestre": "2",
+    "id": 44
   }
-  
 ]

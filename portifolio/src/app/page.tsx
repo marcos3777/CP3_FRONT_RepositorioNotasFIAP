@@ -126,7 +126,17 @@ export default function Page() {
             </option>
           ))}
         </select>
+            {/* Botão Cadastrar */}
+            <button
+          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={() => {
+            window.location.href = '/cadastrar';
+          }}
+        >
+          Cadastrar
+        </button>
       </div>
+      
 
       {/* Renderização Condicional */}
       {selectedName && selectedProva && selectedMateria ? (
