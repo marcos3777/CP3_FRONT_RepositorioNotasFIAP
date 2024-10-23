@@ -4,34 +4,12 @@
 
 @layer components{
 
-    
-
-    .form{
-        @apply max-w-sm mx-auto;
-         
-        & div{
-            @apply mb-5;
-
-            & label{
-                @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
-            }
-
-            & input {
-                @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-            }
-
-            & button{
-                @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
-            }
-        }
-    }
-
     .home{
         @apply  bg-blue-1000 text-white text-2xl font-bold relative min-h-screen bg-gradient-to-r from-customBlue to-blue-900;
     }
 
     .rodape {
-        @apply bg-blue-1000 text-white text-center w-full h-24 bg-gradient-to-r from-customBlue to-blue-900;
+        @apply bg-black text-white text-center w-full p-5 backdrop-blur-lg justify-center;
     }
 
     .content-wrap{
@@ -39,7 +17,7 @@
     }
 
     .cabecalho{
-        @apply flex justify-between items-center h-20 text-2xl bg-gradient-to-r from-customBlue to-blue-900;
+        @apply flex pl-16 justify-between items-center h-20 text-2xl bg-black;
 
         & li{
             @apply mr-20 inline;
@@ -50,18 +28,53 @@
         }
     }
 
-    .tabelaProd{
-        @apply border-2 border-gray-700 m-auto w-10/12 bg-black shadow-lg shadow-gray-600 font-sans font-bold;
+/* Estilizando a Pagina Home */
+.conteiner-home{
+    @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg
+}
+.container-botao{
+    @apply flex justify-between w-full p-4 bg-transparent;
 
-        & th,td{
-            @apply text-center text-white border-2 border-white py-5;
-        }
-
-        & tbody tr{
-            @apply hover:bg-slate-500;
-        }
-
+    & .butao{
+        @apply p-2 border rounded bg-black text-white hover:bg-gray-700
     }
 
+    & .butao-cad{
+        @apply p-2 border-l-2 rounded bg-black text-white hover:bg-gray-800 hover:border-red-600
+    }
+}
 
+
+.container-principal{
+    @apply flex w-full justify-around p-8;
+
+    & .conteudo-1{
+        @apply bg-white p-4 rounded shadow-md w-1/2
+    }
+    & .conteudo-1 h2{
+        @apply text-center font-bold text-lg
+    }
+}
+& .conteiner-welcome{
+    @apply flex flex-col items-center mt-16 text-center px-4;
+    & .welcome-text {
+    @apply text-5xl mb-4 text-white font-thin;
+    }
+    & .item-p1{
+    @apply text-lg text-white font-light mb-8;
+    }
+    & .item-p2{
+    @apply text-white font-light;
+    } 
+    
+}
+
+
+
+/* Estilizando a Pagina Home */
+
+
+/* 404 */
+
+/* 404 */
 }

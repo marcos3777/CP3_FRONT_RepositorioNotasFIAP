@@ -19,9 +19,6 @@ const config: Config = {
       }
     },
   },
-  plugins: [
-    typography,
-    forms
-  ],
+  plugins: [ typography , forms],
 };
 export default config;

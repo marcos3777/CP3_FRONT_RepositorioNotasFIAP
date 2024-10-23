@@ -1,15 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
+
+import { logofiap } from "@/public/fiap.png"
 
 export default function Menu() {
     return (
-
-        <nav>
-            <ul>
-                <li> <Link href="/">Home</Link> </li>
-                <li> <Link href="/produtos">Produtos</Link> </li>
-                <li> <Link href="/produtos/cad-produto">Cadastrar</Link> </li>
-            </ul>
-        </nav>
-
+            <Link href="/portifolio/src/app/page.tsx"><Image>{logofiap}</Image></Link>
     )
 }
