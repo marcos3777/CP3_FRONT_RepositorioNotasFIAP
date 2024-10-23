@@ -3,6 +3,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TipoProva } from '@/types/types';
+import Image from "next/image";
+import Link from "next/link";
+import richardybs from '@/img/yuumi.jpg';
+import marcos from '@/img/marcos.jpg';
+import izzi from '@/img/izzi.jpg';
+
 
 export default function Home() {
   const [lista, setLista] = useState<TipoProva[]>([]);
@@ -46,143 +52,179 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-400">
+    <div className="min-h-screen bg-purple">
       {/* Main Content */}
-      <main className="flex flex-wrap justify-center gap-10 p-10">
+      <main className="mainzuda">
         {/* Card 1 */}
+        <div className="conteiner-main">
         <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
+          className="bg-da-caixa-aluno"
           onClick={() => handleCardClick("Marcos Vinicius")}
         >
           <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+            <Link href="https://github.com/marcos3777"> <Image src={marcos} alt="Profile" className="w-full h-full object-cover rounded-full"/></Link>
           </div>
-          <h2 className="text-xl font-bold mb-2">Marcos V.</h2>
+          <h2 className="nome-aluno">Marcos V.</h2>
           <table className="mx-auto bg-gray-300 mb-4">
             <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "checkpoint")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/checkpoint/marcos"}>CP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Marcos Vinicius", "checkpoint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "Sprint")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/sp"}>SP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Marcos Vinicius", "Sprint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Marcos Vinicius", "global")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Marcos Vinicius", "global")}</td>
               </tr>
+              {/* --- */}
+
             </tbody>
           </table>
-          {selectedCard === "Marcos Vinicius" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/marcos"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
         </div>
 
         {/* Card 2 */}
         <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
+          className="bg-da-caixa-aluno"
           onClick={() => handleCardClick("Richardy B.")}
         >
           <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+          <Link href="https://github.com/richardybs"> <Image src={richardybs} alt="Profile" className="w-full h-full object-cover rounded-full"/> </Link>
           </div>
-          <h2 className="text-xl font-bold mb-2">Richardy B.</h2>
+          <h2 className="nome-aluno">Richardy B.</h2>
           <table className="mx-auto bg-gray-300 mb-4">
             <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "checkpoint")}</td>
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                  <button className="butao" onClick={() => window.location.href = "/checkpoint/richardy"}>CP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Richardy B.", "checkpoint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "Sprint")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                  <button className="butao" onClick={() => window.location.href = "/prova/sp"}>SP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Richardy B.", "Sprint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Richardy B.", "global")}</td>
+              {/* --- */}
+              
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                  <button className="butao" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Richardy B.", "global")}</td>
               </tr>
+              {/* --- */}
+              
             </tbody>
           </table>
-          {selectedCard === "Richardy B." && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/checkpoint/richardy"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
         </div>
 
         {/* Card 3 */}
         <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
+          className="bg-da-caixa-aluno"
           onClick={() => handleCardClick("Pedro Bergara")}
         >
           <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+          <Image src={richardybs} alt="Profile" className="w-full h-full object-cover rounded-full"/>
           </div>
-          <h2 className="text-xl font-bold mb-2">Pedro Bergara</h2>
+          <h2 className="nome-aluno">Pedro Bergara</h2>
           <table className="mx-auto bg-gray-300 mb-4">
             <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "checkpoint")}</td>
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/cp"}>CP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Pedro Bergara", "checkpoint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "Sprint")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/sp"}>SP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Pedro Bergara", "Sprint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Pedro Bergara", "global")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Pedro Bergara", "global")}</td>
               </tr>
+              {/* --- */}
+
             </tbody>
           </table>
-          {selectedCard === "Pedro Bergara" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
         </div>
 
         {/* Card 4 */}
-        <div
-          className="bg-gray-500 p-6 rounded-lg text-center cursor-pointer card"
-          onClick={() => handleCardClick("Henrique Izzi")}
-        >
+        <div className="bg-da-caixa-aluno" onClick={() => handleCardClick("Henrique Izzi")}>
           <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4">
-            <img src="/profile-placeholder.svg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+            <Image src={izzi} alt="Profile" className="w-full h-full object-cover rounded-full"/>
           </div>
-          <h2 className="text-xl font-bold mb-2">Henrique Izzi</h2>
+          <h2 className="nome-aluno">Henrique Izzi</h2>
           <table className="mx-auto bg-gray-300 mb-4">
             <tbody>
-              <tr>
-                <td className="px-4 py-2 border">CP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "checkpoint")}</td>
+              
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                <button className="butao" onClick={() => window.location.href = "/prova/cp"}>CP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Henrique Izzi", "checkpoint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">SP:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "Sprint")}</td>
+              {/* --- */}
+              
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                  <button className="butao" onClick={() => window.location.href = "/prova/sp"}>SP</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Henrique Izzi", "Sprint")}</td>
               </tr>
-              <tr>
-                <td className="px-4 py-2 border">GS:</td>
-                <td className="px-4 py-2 border">{calcularMedia("Henrique Izzi", "global")}</td>
+              {/* --- */}
+
+              {/* --- */}
+              <tr className="caixa-aluno">
+                <td className="box-border-aluno">
+                  <button className="butao" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
+                </td>
+                <td className="box-border-aluno">{calcularMedia("Henrique Izzi", "global")}</td>
               </tr>
+              {/* --- */}
+
             </tbody>
           </table>
-          {selectedCard === "Henrique Izzi" && (
-            <div className="mt-4 space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/cp"}>CP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/sp"}>SP</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => window.location.href = "/prova/globalsolution"}>GS</button>
-            </div>
-          )}
+        </div>
         </div>
       </main>
     </div>

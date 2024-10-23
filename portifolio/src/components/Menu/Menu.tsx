@@ -4,10 +4,9 @@ export default function Menu() {
     return (
 
         <nav>
-            <ul>
+            <ul className="menu-items">
                 <li> <Link href="/">Home</Link> </li>
-                <li> <Link href="/produtos">Produtos</Link> </li>
-                <li> <Link href="/produtos/cad-produto">Cadastrar</Link> </li>
+                <li> <Link href="https://github.com/marcos3777/CP3_FRONT_RepositorioNotasFIAP">Projeto no Github</Link> </li>
             </ul>
         </nav>
 

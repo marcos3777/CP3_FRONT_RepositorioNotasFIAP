@@ -16,7 +16,11 @@ const config: Config = {
       },
       backgroundColor:{
         "blue-1000": "#02001a",
-      }
+      },
+      
+      backgroundImage: {
+          'gradient-90': 'linear-gradient(90deg, #5170ff, #ff66c4)',
+        },
     },
   },
   plugins: [
