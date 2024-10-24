@@ -145,21 +145,21 @@ export default function Page() {
         // Conteúdo exibido após as seleções serem feitas
         <div className="container-principal">
           {/* Semestre 1 */}
-          <div className="conteudo-1">
+          <div className="conteudo-semestr">
             <h2>Semestre 1</h2>
             {semestre1Data.length > 0 ? (
               semestre1Data.map((item) => (
-                <div key={item.id} className="border p-4 m-2 relative">
+                <div key={item.id} className="caixa-semestr">
                   <Link
                     href={`/edit/${item.id}`}
-                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                    className="edit"
                   >
                     Editar
                   </Link>
-                  <h3 className="font-bold">{item.title}</h3>
+                  <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
                   <p>Feedback: {item.feedback}</p>
-                  <p>Nota: {item.note}</p>
+                  <h4>Nota: {item.note}</h4>
                 </div>
               ))
             ) : (
@@ -168,21 +168,21 @@ export default function Page() {
           </div>
 
           {/* Semestre 2 */}
-          <div className="bg-white p-4 rounded shadow-md w-1/2">
-            <h2 className="text-center font-bold text-lg">Semestre 2</h2>
+          <div className="conteudo-semestr">
+            <h2>Semestre 2</h2>
             {semestre2Data.length > 0 ? (
               semestre2Data.map((item) => (
-                <div key={item.id} className="border p-4 m-2 relative">
+                <div key={item.id} className="caixa-semestr">
                   <Link
                     href={`/edit/${item.id}`}
-                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                    className="edit"
                   >
                     Editar
                   </Link>
-                  <h3 className="font-bold">{item.title}</h3>
+                  <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
                   <p>Feedback: {item.feedback}</p>
-                  <p>Nota: {item.note}</p>
+                  <h4>Nota: {item.note}</h4>
                 </div>
               ))
             ) : (
