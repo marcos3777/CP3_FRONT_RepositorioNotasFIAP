@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { MdModeEdit } from "react-icons/md";
 // import Image from 'next/image';
 // import  { richardyimg } from '../public/richardyimage.jpg';
 
@@ -154,7 +155,7 @@ export default function Page() {
                     href={`/edit/${item.id}`}
                     className="edit"
                   >
-                    Editar
+                  <MdModeEdit />
                   </Link>
                   <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
@@ -177,7 +178,7 @@ export default function Page() {
                     href={`/edit/${item.id}`}
                     className="edit"
                   >
-                    Editar
+                  <MdModeEdit />
                   </Link>
                   <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
