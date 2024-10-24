@@ -9,7 +9,7 @@ export default function Menu() {
     };
     return (
             <div onClick={handleReload}>
-                <Image src={logofiap} alt="Logo da Fiap"className="imgFiap" className="imgfiap" />
+                <Image src={logofiap} alt="Logo da Fiap" className="imgfiap" />
             </div>
     )
 }

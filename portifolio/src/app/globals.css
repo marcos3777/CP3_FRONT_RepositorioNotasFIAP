@@ -4,10 +4,6 @@
 
 @layer components{
 
-    .home{
-        @apply  bg-blue-1000 text-white text-2xl font-bold relative min-h-screen bg-gradient-to-r from-customBlue to-blue-900;
-    }
-
     .rodape {
         @apply bg-black text-white text-center w-full p-5 backdrop-blur-lg justify-center;
     }
@@ -29,7 +25,7 @@
     }
 
     .imgfiap{
-        @apply max-w-20
+        @apply max-w-20 hover:max-w-24 hover:transition-transform duration-300 ease-in-out
     }
 
 /* Estilizando a Pagina Home */
