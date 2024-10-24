@@ -28,6 +28,10 @@
         }
     }
 
+    .imgfiap{
+        @apply max-w-20
+    }
+
 /* Estilizando a Pagina Home */
 .conteiner-home{
     @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg

@@ -1,10 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
+'use client';
 
-import { logofiap } from "@/public/fiap.png"
+import Image from "next/image";
+import logofiap from "@/public/fiap.png"
 
 export default function Menu() {
+    const handleReload = () => {
+        window.location.href = "/";
+    };
     return (
-            <Link href="/portifolio/src/app/page.tsx"><Image>{logofiap}</Image></Link>
+            <div onClick={handleReload}>
+                <Image src={logofiap} alt="Logo da Fiap"className="imgFiap" className="imgfiap" />
+            </div>
     )
 }
