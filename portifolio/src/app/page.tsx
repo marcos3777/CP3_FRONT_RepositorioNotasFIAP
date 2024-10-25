@@ -7,7 +7,7 @@ import imgMarcos from "@/public/marcosimage.jpg";
 import imgRichardy from "@/public/richardyimage.jpg";
 import imgHenrique from "@/public/izziimage.jpg";
 import imgArthur from "@/public/arthurimage.jpg";
-
+import imgPedro from "@/public/pedroimage.jpg";
 interface CustomDropdownProps {
   options: string[];
   label: string;
@@ -98,7 +98,7 @@ export default function Page() {
     },
     {
       name: 'Pedro Bergara',
-      image: "", // Add image for Pedro if available
+      image: imgPedro, 
     },
     {
       name: 'Arthur Ramos dos Santos',
