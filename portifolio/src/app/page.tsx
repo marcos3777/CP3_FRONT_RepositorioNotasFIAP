@@ -3,6 +3,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { MdModeEdit } from "react-icons/md";
+// import Image from 'next/image';
+// import  { richardyimg } from '../public/richardyimage.jpg';
 
 export default function Page() {
   interface Data {
@@ -23,24 +26,24 @@ export default function Page() {
   const [semestre1Data, setSemestre1Data] = useState<Data[]>([]);
   const [semestre2Data, setSemestre2Data] = useState<Data[]>([]);
 
-  const participants = [
-    {
-      name: 'Marcos Vinicius',
-      image: '/images/participants/marcos-vinicius.jpg',
-    },
-    {
-      name: 'Richard',
-      image: '/images/participants/richard.jpg',
-    },
-    {
-      name: 'Heinrique',
-      image: '/images/participants/heinrique.jpg',
-    },
-    {
-      name: 'Pedro',
-      image: '/images/participants/pedro.jpg',
-    },
-  ];
+  // const participants = [
+  //   {
+  //     name: 'Marcos Vinicius',
+  //     image: '/images/participants/marcos-vinicius.jpg',
+  //   },
+  //   {
+  //     name: 'Richard',
+  //     image: '/images/participants/richardy.jpg',
+  //   },
+  //   {
+  //     name: 'Heinrique',
+  //     image: '/images/participants/heinrique.jpg',
+  //   },
+  //   {
+  //     name: 'Pedro',
+  //     image: '/images/participants/pedro.jpg',
+  //   },
+  // ];
 
   
 
@@ -85,11 +88,11 @@ export default function Page() {
   }, [selectedName, selectedProva, selectedMateria]);
 
   return (
-    <div className="flex flex-col items-center bg-gray-200 min-h-screen">
+    <div className="conteiner-home">
       {/* Cabeçalho com Dropdowns */}
-      <div className="flex justify-between w-full p-4 bg-gray-400">
+      <div className="container-botao">
         <select
-          className="p-2 border rounded"
+          className="butao"
           value={selectedName}
           onChange={(e) => setSelectedName(e.target.value)}
         >
@@ -102,7 +105,7 @@ export default function Page() {
         </select>
 
         <select
-          className="p-2 border rounded"
+          className="butao"
           value={selectedProva}
           onChange={(e) => setSelectedProva(e.target.value)}
         >
@@ -115,7 +118,7 @@ export default function Page() {
         </select>
 
         <select
-          className="p-2 border rounded"
+          className="butao"
           value={selectedMateria}
           onChange={(e) => setSelectedMateria(e.target.value)}
         >
@@ -128,7 +131,7 @@ export default function Page() {
         </select>
             {/* Botão Cadastrar */}
             <button
-          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="butao-cad"
           onClick={() => {
             window.location.href = '/cadastrar';
           }}
@@ -141,23 +144,23 @@ export default function Page() {
       {/* Renderização Condicional */}
       {selectedName && selectedProva && selectedMateria ? (
         // Conteúdo exibido após as seleções serem feitas
-        <div className="flex w-full justify-around p-8">
+        <div className="container-principal">
           {/* Semestre 1 */}
-          <div className="bg-white p-4 rounded shadow-md w-1/2">
-            <h2 className="text-center font-bold text-lg">Semestre 1</h2>
+          <div className="conteudo-semestr">
+            <h2>Semestre 1</h2>
             {semestre1Data.length > 0 ? (
               semestre1Data.map((item) => (
-                <div key={item.id} className="border p-4 m-2 relative">
+                <div key={item.id} className="caixa-semestr">
                   <Link
                     href={`/edit/${item.id}`}
-                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                    className="edit"
                   >
-                    Editar
+                  <MdModeEdit />
                   </Link>
-                  <h3 className="font-bold">{item.title}</h3>
+                  <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
                   <p>Feedback: {item.feedback}</p>
-                  <p>Nota: {item.note}</p>
+                  <h4>Nota: {item.note}</h4>
                 </div>
               ))
             ) : (
@@ -166,21 +169,21 @@ export default function Page() {
           </div>
 
           {/* Semestre 2 */}
-          <div className="bg-white p-4 rounded shadow-md w-1/2">
-            <h2 className="text-center font-bold text-lg">Semestre 2</h2>
+          <div className="conteudo-semestr">
+            <h2>Semestre 2</h2>
             {semestre2Data.length > 0 ? (
               semestre2Data.map((item) => (
-                <div key={item.id} className="border p-4 m-2 relative">
+                <div key={item.id} className="caixa-semestr">
                   <Link
                     href={`/edit/${item.id}`}
-                    className="absolute top-2 right-2 text-blue-500 hover:underline text-sm"
+                    className="edit"
                   >
-                    Editar
+                  <MdModeEdit />
                   </Link>
-                  <h3 className="font-bold">{item.title}</h3>
+                  <h3 className="titulo-item-semestr">{item.title}</h3>
                   <p>{item.date}</p>
                   <p>Feedback: {item.feedback}</p>
-                  <p>Nota: {item.note}</p>
+                  <h4>Nota: {item.note}</h4>
                 </div>
               ))
             ) : (
@@ -190,17 +193,12 @@ export default function Page() {
         </div>
       ) : (
         // Conteúdo caso nada seja selecionado 
-        <div className="flex flex-col items-center mt-16 text-center px-4">
-          <h1 className="text-3xl font-bold mb-4">Bem-vindo ao Sistema de Notas</h1>
-          <p className="text-lg text-gray-700 mb-8">
+        <div className="conteiner-welcome">
+          <h1 className="welcome-text">Bem-vindo ao Sistema de Notas</h1>
+          <p className="item-p1">
             Para visualizar os dados das provas, por favor selecione o <strong>Nome</strong>, <strong>Prova</strong> e <strong>Matéria</strong> nos menus acima.
           </p>
-          <img  //remover tag img e adicionar Image do next (isso se encontrar alguma imagem legal)
-            src="/images/welcome.svg"
-            alt="Bem-vindo"
-            className="w-1/2 max-w-md mb-8"
-          />
-          <p className="text-gray-600">
+          <p className="item-p2">
             Aplicação ainda em desenvolvimento. 
           </p>
         </div>

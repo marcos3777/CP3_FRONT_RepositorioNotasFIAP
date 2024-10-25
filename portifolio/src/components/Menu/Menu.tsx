@@ -1,15 +1,15 @@
-import Link from "next/link";
+'use client';
+
+import Image from "next/image";
+import logofiap from "@/public/fiap.png"
 
 export default function Menu() {
+    const handleReload = () => {
+        window.location.href = "/";
+    };
     return (
-
-        <nav>
-            <ul>
-                <li> <Link href="/">Home</Link> </li>
-                <li> <Link href="/produtos">Produtos</Link> </li>
-                <li> <Link href="/produtos/cad-produto">Cadastrar</Link> </li>
-            </ul>
-        </nav>
-
+            <div onClick={handleReload}>
+                <Image src={logofiap} alt="Logo da Fiap" className="imgfiap" />
+            </div>
     )
 }

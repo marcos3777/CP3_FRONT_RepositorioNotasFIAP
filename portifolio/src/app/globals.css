@@ -4,34 +4,8 @@
 
 @layer components{
 
-    
-
-    .form{
-        @apply max-w-sm mx-auto;
-         
-        & div{
-            @apply mb-5;
-
-            & label{
-                @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
-            }
-
-            & input {
-                @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-            }
-
-            & button{
-                @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
-            }
-        }
-    }
-
-    .home{
-        @apply  bg-blue-1000 text-white text-2xl font-bold relative min-h-screen bg-gradient-to-r from-customBlue to-blue-900;
-    }
-
     .rodape {
-        @apply bg-blue-1000 text-white text-center w-full h-24 bg-gradient-to-r from-customBlue to-blue-900;
+        @apply bg-black text-white text-center w-full p-5 backdrop-blur-lg justify-center;
     }
 
     .content-wrap{
@@ -39,7 +13,7 @@
     }
 
     .cabecalho{
-        @apply flex justify-between items-center h-20 text-2xl bg-gradient-to-r from-customBlue to-blue-900;
+        @apply flex pl-16 justify-between items-center h-20 text-2xl bg-black;
 
         & li{
             @apply mr-20 inline;
@@ -50,18 +24,80 @@
         }
     }
 
-    .tabelaProd{
-        @apply border-2 border-gray-700 m-auto w-10/12 bg-black shadow-lg shadow-gray-600 font-sans font-bold;
-
-        & th,td{
-            @apply text-center text-white border-2 border-white py-5;
-        }
-
-        & tbody tr{
-            @apply hover:bg-slate-500;
-        }
-
+    .imgfiap{
+        @apply max-w-20 hover:max-w-24 hover:transition-transform duration-300 ease-in-out
     }
 
+/* Estilizando a Pagina Home */
+.conteiner-home{
+    @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg
+}
+.container-botao{
+    @apply flex justify-between w-full p-4 bg-transparent;
 
+    & .butao{
+        @apply p-2 border rounded bg-black text-white hover:bg-gray-950
+    }
+
+    & .butao-cad{
+        @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2
+    }
+}
+
+.conteiner-welcome{
+    @apply flex flex-col items-center mt-16 text-center px-4;
+    & .welcome-text {
+    @apply text-5xl mb-4 text-white font-thin;
+    }
+    & .item-p1{
+    @apply text-lg text-white font-light mb-8;
+    }
+    & .item-p2{
+    @apply text-white font-light;
+    } 
+    
+}
+
+/* Estilizando a Pagina Home */
+.container-principal{
+    @apply flex w-full justify-around p-8;
+
+    & .conteudo-semestr{
+        @apply bg-white/30 backdrop-blur-md p-4 pt-5 rounded shadow-md w-5/12
+    }
+
+    & .conteudo-semestr h2{
+        @apply text-center font-bold text-3xl text-zinc-950
+    }
+
+    &  .caixa-semestr {
+        @apply border rounded border-black p-4 m-2 relative bg-black text-white
+    }
+
+    & .titulo-item-semestr{
+        @apply text-lg font-bold text-red-600
+        }
+
+    &  .caixa-semestr p {
+        @apply text-white gap-2 pt-2
+    }
+
+    & .caixa-semestr h4{
+        @apply text-lg font-bold text-white text-end
+    }
+    & .edit{  
+        /* Imagem React Icons no Editar */
+        @apply absolute top-2 right-2 text-lg hover:scale-125 transition-transform duration-300 ease-in-out cursor-pointer;
+    }
+}
+/* Estilizando a aba de Semestres */
+
+
+
+/* Estilizando a aba de Semestres */
+
+
+/* 404 */
+
+/* 404 */
 }
