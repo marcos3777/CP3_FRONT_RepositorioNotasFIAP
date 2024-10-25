@@ -29,7 +29,7 @@ export default function CadastrarPage() {
     semestre: '',
   });
 
-  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara'];
+  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara, Arthur Ramos dos Santos'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
