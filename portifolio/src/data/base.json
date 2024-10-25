@@ -482,5 +482,50 @@
     "note": 10,
     "semestre": "2",
     "id": 44
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "cp1",
+    "date": "2024-04-19",
+    "feedback": "Muito bom",
+    "note": 9,
+    "semestre": "1",
+    "id": 45
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "cp2",
+    "date": "2024-05-03",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 46
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "Sprint 1",
+    "date": "2024-05-09",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 47
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "Sprint 2",
+    "date": "2024-04-19",
+    "feedback": "Muito bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 48
   }
+
 ]
