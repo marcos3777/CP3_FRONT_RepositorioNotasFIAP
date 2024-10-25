@@ -1,11 +1,67 @@
-// app/page.tsx
 "use client";
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { MdModeEdit } from "react-icons/md";
-// import Image from 'next/image';
-// import  { richardyimg } from '../public/richardyimage.jpg';
+import Image from 'next/image';
+import { MdModeEdit, MdDelete } from "react-icons/md";
+import imgMarcos from "@/public/marcosimage.jpg";
+import imgRichardy from "@/public/richardyimage.jpg";
+import imgHenrique from "@/public/izziimage.jpg";
+
+interface CustomDropdownProps {
+  options: string[];
+  label: string;
+  value: string;
+  onSelect: (value: string) => void;
+}
+
+const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  const handleSelect = (option: string) => {
+    setIsOpen(false);
+    onSelect(option);
+  };
+
+  return (
+    <div ref={dropdownRef} className="relative inline-block text-left mr-4">
+      {/* Label */}
+      <p
+        className="cursor-pointer border-b border-dotted border-gray-500 inline-block text-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {value || label}
+      </p>
+
+      {/* Options */}
+      {isOpen && (
+        <div className="absolute z-10 mt-2 w-56 bg-white shadow-md rounded-md">
+          {options.map((option) => (
+            <div
+              key={option}
+              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              onClick={() => handleSelect(option)}
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function Page() {
   interface Data {
@@ -26,28 +82,26 @@ export default function Page() {
   const [semestre1Data, setSemestre1Data] = useState<Data[]>([]);
   const [semestre2Data, setSemestre2Data] = useState<Data[]>([]);
 
-  // const participants = [
-  //   {
-  //     name: 'Marcos Vinicius',
-  //     image: '/images/participants/marcos-vinicius.jpg',
-  //   },
-  //   {
-  //     name: 'Richard',
-  //     image: '/images/participants/richardy.jpg',
-  //   },
-  //   {
-  //     name: 'Heinrique',
-  //     image: '/images/participants/heinrique.jpg',
-  //   },
-  //   {
-  //     name: 'Pedro',
-  //     image: '/images/participants/pedro.jpg',
-  //   },
-  // ];
+  const participants = [
+    {
+      name: 'Marcos Vinicius',
+      image: imgMarcos,
+    },
+    {
+      name: 'Richardy Borges',
+      image: imgRichardy,
+    },
+    {
+      name: 'Henrique Izzi',
+      image: imgHenrique,
+    },
+    {
+      name: 'Pedro Bergara',
+      image: "", // Add image for Pedro if available
+    },
+  ];
 
-  
-
-  const nomes = ['Marcos Vinicius', 'Richardy Borges ', 'Henrique Izzi', 'Pedro Bergara']; //Nomes para dropdown para colocar igual no json
+  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
@@ -87,121 +141,220 @@ export default function Page() {
     }
   }, [selectedName, selectedProva, selectedMateria]);
 
+  const handleDelete = async (id: number) => {
+    const confirmDelete = confirm('Tem certeza que deseja deletar este item?');
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(`/api/delete/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        // Update the data after deletion
+        fetchData();
+      } else {
+        console.error('Failed to delete the item');
+      }
+    } catch (error) {
+      console.error('An error occurred', error);
+    }
+  };
+
+  const handleBack = () => {
+    setSelectedName('');
+    setSelectedProva('');
+    setSelectedMateria('');
+    setSemestre1Data([]);
+    setSemestre2Data([]);
+  };
+
+  const participant = participants.find((p) => p.name === selectedName);
+
   return (
     <div className="conteiner-home">
-      {/* Cabeçalho com Dropdowns */}
-      <div className="container-botao">
-        <select
-          className="butao"
-          value={selectedName}
-          onChange={(e) => setSelectedName(e.target.value)}
-        >
-          <option value="">Nome</option>
-          {nomes.map((nome) => (
-            <option key={nome} value={nome}>
-              {nome}
-            </option>
-          ))}
-        </select>
+      {/* Show normal dropdowns only if selections are incomplete */}
+      {(!selectedName || !selectedProva || !selectedMateria) && (
+        <>
+          {/* Dropdowns */}
+          <div className="container-botao">
+            <select
+              className="butao"
+              value={selectedName}
+              onChange={(e) => setSelectedName(e.target.value)}
+            >
+              <option value="">Nome</option>
+              {nomes.map((nome) => (
+                <option key={nome} value={nome}>
+                  {nome}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className="butao"
-          value={selectedProva}
-          onChange={(e) => setSelectedProva(e.target.value)}
-        >
-          <option value="">Provas</option>
-          {provas.map((prova) => (
-            <option key={prova} value={prova}>
-              {prova}
-            </option>
-          ))}
-        </select>
+            <select
+              className="butao"
+              value={selectedProva}
+              onChange={(e) => setSelectedProva(e.target.value)}
+            >
+              <option value="">Provas</option>
+              {provas.map((prova) => (
+                <option key={prova} value={prova}>
+                  {prova}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className="butao"
-          value={selectedMateria}
-          onChange={(e) => setSelectedMateria(e.target.value)}
-        >
-          <option value="">Matéria</option>
-          {materias.map((materia) => (
-            <option key={materia} value={materia}>
-              {materia}
-            </option>
-          ))}
-        </select>
+            <select
+              className="butao"
+              value={selectedMateria}
+              onChange={(e) => setSelectedMateria(e.target.value)}
+            >
+              <option value="">Matéria</option>
+              {materias.map((materia) => (
+                <option key={materia} value={materia}>
+                  {materia}
+                </option>
+              ))}
+            </select>
             {/* Botão Cadastrar */}
             <button
-          className="butao-cad"
-          onClick={() => {
-            window.location.href = '/cadastrar';
-          }}
-        >
-          Cadastrar
-        </button>
-      </div>
-      
-
-      {/* Renderização Condicional */}
-      {selectedName && selectedProva && selectedMateria ? (
-        // Conteúdo exibido após as seleções serem feitas
-        <div className="container-principal">
-          {/* Semestre 1 */}
-          <div className="conteudo-semestr">
-            <h2>Semestre 1</h2>
-            {semestre1Data.length > 0 ? (
-              semestre1Data.map((item) => (
-                <div key={item.id} className="caixa-semestr">
-                  <Link
-                    href={`/edit/${item.id}`}
-                    className="edit"
-                  >
-                  <MdModeEdit />
-                  </Link>
-                  <h3 className="titulo-item-semestr">{item.title}</h3>
-                  <p>{item.date}</p>
-                  <p>Feedback: {item.feedback}</p>
-                  <h4>Nota: {item.note}</h4>
-                </div>
-              ))
-            ) : (
-              <p className="text-center text-gray-500">Nenhum dado disponível para o Semestre 1.</p>
-            )}
+              className="butao-cad"
+              onClick={() => {
+                window.location.href = '/cadastrar';
+              }}
+            >
+              Cadastrar
+            </button>
           </div>
 
-          {/* Semestre 2 */}
-          <div className="conteudo-semestr">
-            <h2>Semestre 2</h2>
-            {semestre2Data.length > 0 ? (
-              semestre2Data.map((item) => (
-                <div key={item.id} className="caixa-semestr">
-                  <Link
-                    href={`/edit/${item.id}`}
-                    className="edit"
-                  >
-                  <MdModeEdit />
-                  </Link>
-                  <h3 className="titulo-item-semestr">{item.title}</h3>
-                  <p>{item.date}</p>
-                  <p>Feedback: {item.feedback}</p>
-                  <h4>Nota: {item.note}</h4>
-                </div>
-              ))
-            ) : (
-              <p className="text-center text-gray-500">Nenhum dado disponível para o Semestre 2.</p>
-            )}
+          {/* Welcome content */}
+          <div className="conteiner-welcome">
+            <h1 className="welcome-text">Bem-vindo ao Sistema de Notas</h1>
+            <p className="item-p1">
+              Para visualizar os dados das provas, por favor selecione o{' '}
+              <strong>Nome</strong>, <strong>Prova</strong> e{' '}
+              <strong>Matéria</strong> nos menus acima.
+            </p>
+            <p className="item-p2">Aplicação ainda em desenvolvimento.</p>
           </div>
-        </div>
-      ) : (
-        // Conteúdo caso nada seja selecionado 
-        <div className="conteiner-welcome">
-          <h1 className="welcome-text">Bem-vindo ao Sistema de Notas</h1>
-          <p className="item-p1">
-            Para visualizar os dados das provas, por favor selecione o <strong>Nome</strong>, <strong>Prova</strong> e <strong>Matéria</strong> nos menus acima.
-          </p>
-          <p className="item-p2">
-            Aplicação ainda em desenvolvimento. 
-          </p>
-        </div>
+        </>
+      )}
+
+      {/* Show content when all selections are made */}
+      {selectedName && selectedProva && selectedMateria && (
+        <>
+          {/* Header with image, custom dropdowns, and buttons */}
+          <div className="header">
+            {/* Image */}
+            <div className="image-container">
+              {participant?.image ? (
+                <Image
+                  src={participant.image}
+                  alt={participant.name}
+                  className="participant-image rounded-full"
+                  width={96}
+                  height={96}
+                />
+              ) : (
+                <div className="participant-placeholder">
+                  <p>Imagem não disponível</p>
+                </div>
+              )}
+            </div>
+            {/* Custom Dropdowns for Nome, Prova, and Matéria */}
+            <div className="labels">
+              <CustomDropdown
+                options={nomes}
+                label="Selecione um nome"
+                value={selectedName}
+                onSelect={(value) => setSelectedName(value)}
+              />
+              <CustomDropdown
+                options={provas}
+                label="Selecione uma prova"
+                value={selectedProva}
+                onSelect={(value) => setSelectedProva(value)}
+              />
+              <CustomDropdown
+                options={materias}
+                label="Selecione uma matéria"
+                value={selectedMateria}
+                onSelect={(value) => setSelectedMateria(value)}
+              />
+            </div>
+            {/* Buttons */}
+            <div className="button-group">
+              <button className="butao-cad" onClick={handleBack}>
+                Voltar
+              </button>
+              <button
+                className="butao-cad"
+                onClick={() => {
+                  window.location.href = '/cadastrar';
+                }}
+              >
+                Cadastrar
+              </button>
+            </div>
+          </div>
+          {/* Rest of the content */}
+          <div className="container-principal">
+            {/* Semestre 1 */}
+            <div className="conteudo-semestr">
+              <h2>Semestre 1</h2>
+              {semestre1Data.length > 0 ? (
+                semestre1Data.map((item) => (
+                  <div key={item.id} className="caixa-semestr">
+                    <Link href={`/edit/${item.id}`} className="edit">
+                      <MdModeEdit />
+                    </Link>
+                    <button
+                      className="delete"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      <MdDelete />
+                    </button>
+                    <h3 className="titulo-item-semestr">{item.title}</h3>
+                    <p>{item.date}</p>
+                    <p>Feedback: {item.feedback}</p>
+                    <h4>Nota: {item.note}</h4>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-300">
+                  Nenhum dado disponível para o Semestre 1.
+                </p>
+              )}
+            </div>
+
+            {/* Semestre 2 */}
+            <div className="conteudo-semestr">
+              <h2>Semestre 2</h2>
+              {semestre2Data.length > 0 ? (
+                semestre2Data.map((item) => (
+                  <div key={item.id} className="caixa-semestr">
+                    <Link href={`/edit/${item.id}`} className="edit">
+                      <MdModeEdit />
+                    </Link>
+                    <button
+                      className="delete"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      <MdDelete />
+                    </button>
+                    <h3 className="titulo-item-semestr">{item.title}</h3>
+                    <p>{item.date}</p>
+                    <p>Feedback: {item.feedback}</p>
+                    <h4>Nota: {item.note}</h4>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-300">
+                  Nenhum dado disponível para o Semestre 2.
+                </p>
+              )}
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

@@ -25,79 +25,145 @@
     }
 
     .imgfiap{
-        @apply max-w-20 hover:max-w-24 hover:transition-transform duration-300 ease-in-out
+        @apply max-w-20 hover:max-w-24 hover:transition-transform duration-300 ease-in-out;
     }
 
-/* Estilizando a Pagina Home */
-.conteiner-home{
-    @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg
-}
-.container-botao{
-    @apply flex justify-between w-full p-4 bg-transparent;
-
-    & .butao{
-        @apply p-2 border rounded bg-black text-white hover:bg-gray-950
+    /* Styling the Home Page */
+    .conteiner-home{
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
+        color: #ffffff; /* Ensure all text inside has light color */
     }
-
-    & .butao-cad{
-        @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2
-    }
-}
-
-.conteiner-welcome{
-    @apply flex flex-col items-center mt-16 text-center px-4;
-    & .welcome-text {
-    @apply text-5xl mb-4 text-white font-thin;
-    }
-    & .item-p1{
-    @apply text-lg text-white font-light mb-8;
-    }
-    & .item-p2{
-    @apply text-white font-light;
-    } 
     
-}
+    .container-botao{
+        @apply flex justify-between w-full p-4 bg-transparent;
 
-/* Estilizando a Pagina Home */
-.container-principal{
-    @apply flex w-full justify-around p-8;
-
-    & .conteudo-semestr{
-        @apply bg-white/30 backdrop-blur-md p-4 pt-5 rounded shadow-md w-5/12
-    }
-
-    & .conteudo-semestr h2{
-        @apply text-center font-bold text-3xl text-zinc-950
-    }
-
-    &  .caixa-semestr {
-        @apply border rounded border-black p-4 m-2 relative bg-black text-white
-    }
-
-    & .titulo-item-semestr{
-        @apply text-lg font-bold text-red-600
+        & .butao{
+            @apply p-2 border rounded bg-black text-white hover:bg-gray-950;
         }
 
-    &  .caixa-semestr p {
-        @apply text-white gap-2 pt-2
+        & .butao-cad{
+            @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2;
+        }
     }
 
-    & .caixa-semestr h4{
-        @apply text-lg font-bold text-white text-end
+    .conteiner-welcome{
+        @apply flex flex-col items-center mt-16 text-center px-4;
+        
+        & .welcome-text {
+            @apply text-5xl mb-4 text-white font-thin;
+        }
+
+        & .item-p1{
+            @apply text-lg text-white font-light mb-8;
+        }
+
+        & .item-p2{
+            @apply text-white font-light;
+        } 
     }
-    & .edit{  
-        /* Imagem React Icons no Editar */
-        @apply absolute top-2 right-2 text-lg hover:scale-125 transition-transform duration-300 ease-in-out cursor-pointer;
+
+    /* Styling the Main Content */
+    .container-principal{
+        @apply flex w-full justify-around p-8;
+
+        & .conteudo-semestr{
+            @apply bg-white/30 backdrop-blur-md p-4 pt-5 rounded shadow-md w-5/12;
+        }
+
+        & .conteudo-semestr h2{
+            @apply text-center font-bold text-3xl text-white;
+        }
+
+        &  .caixa-semestr {
+            @apply border rounded border-white p-4 m-2 relative bg-black text-white;
+        }
+
+        & .titulo-item-semestr{
+            @apply text-lg font-bold text-red-600;
+        }
+
+        &  .caixa-semestr p {
+            @apply text-white gap-2 pt-2;
+        }
+
+        & .caixa-semestr h4{
+            @apply text-lg font-bold text-white text-end;
+        }
+
+        & .edit{  
+            @apply absolute top-2 right-8 text-lg hover:scale-125 transition-transform duration-300 ease-in-out cursor-pointer text-white;
+        }
+
+        & .delete{
+            @apply absolute top-2 right-2 text-lg hover:scale-125 transition-transform duration-300 ease-in-out cursor-pointer text-white;
+        }
     }
-}
-/* Estilizando a aba de Semestres */
 
+    /* Header Styling */
+    .header {
+        @apply flex items-start w-full p-4;
 
+        & .image-container {
+            @apply w-24 h-24 flex-shrink-0;
+        }
 
-/* Estilizando a aba de Semestres */
+        & .participant-image {
+            @apply w-full h-full object-cover rounded-full;
+        }
 
+        & .participant-placeholder {
+            @apply w-24 h-24 flex items-center justify-center bg-gray-700 text-white rounded-full;
+        }
 
-/* 404 */
+        & .labels {
+            @apply flex flex-col ml-4 mt-2; /* Adjusted to stack labels vertically */
+        }
 
-/* 404 */
+        & h2 {
+            @apply text-2xl font-bold text-white;
+        }
+
+        & p {
+            @apply text-lg text-white mt-2; /* Added margin-top for spacing */
+        }
+
+        & .button-group {
+            @apply flex gap-2 ml-auto; /* Moved buttons to the right */
+        }
+
+        & .butao-cad {
+            @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2;
+        }
+    }
+
+    /* Custom Dropdown Styling */
+    .labels .custom-dropdown {
+        @apply relative inline-block text-left mt-2;
+    }
+
+    .labels .custom-dropdown p {
+        @apply cursor-pointer border-b border-dotted border-gray-500 inline-block text-white;
+    }
+
+    .labels .custom-dropdown-options {
+        @apply absolute z-10 mt-2 w-56 bg-gray-800 shadow-md rounded-md; /* Changed background color to gray */
+    }
+
+    .labels .custom-dropdown-option {
+        @apply px-4 py-2 hover:bg-gray-700 cursor-pointer text-white; /* White text */
+    }
+
+    /* Adjust text color for better legibility */
+    .text-white {
+        color: #ffffff;
+    }
+
+    .text-gray-300 {
+        color: #d1d5db;
+    }
+
+    /* Participant Placeholder Text */
+    .participant-placeholder p {
+        @apply text-center;
+    }
 }
