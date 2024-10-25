@@ -6,6 +6,7 @@ import { MdModeEdit, MdDelete } from "react-icons/md";
 import imgMarcos from "@/public/marcosimage.jpg";
 import imgRichardy from "@/public/richardyimage.jpg";
 import imgHenrique from "@/public/izziimage.jpg";
+import imgArthur from "@/public/arthurimage.jpg";
 
 interface CustomDropdownProps {
   options: string[];
@@ -99,9 +100,13 @@ export default function Page() {
       name: 'Pedro Bergara',
       image: "", // Add image for Pedro if available
     },
+    {
+      name: 'Arthur Ramos dos Santos',
+      image: imgArthur, 
+    },
   ];
 
-  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara'];
+  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara', 'Arthur Ramos dos Santos'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
