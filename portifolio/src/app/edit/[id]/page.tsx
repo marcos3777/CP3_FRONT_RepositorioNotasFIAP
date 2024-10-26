@@ -23,7 +23,7 @@ const EditPage = () => {
 
   const [formData, setFormData] = useState<Data | null>(null);
 
-  const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro', 'Arthur Ramos dos Santos'];
+  const nomes = ['Marcos Vinicius', 'Richard', 'Henrique Izzi', 'Pedro Bergara', 'Arthur Ramos dos Santos'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
