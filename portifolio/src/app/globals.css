@@ -166,4 +166,28 @@
     .participant-placeholder p {
         @apply text-center;
     }
+    /* DROPDOWN */
+
+    .dropdownnomes {
+        @apply relative inline-block text-left mr-4;
+      }
+      
+      .opcoeshover {
+        @apply px-4 py-2 hover:bg-red-700 cursor-pointer;
+      }
+      
+      .opcoesnomes {
+        @apply cursor-pointer border-b border-dotted border-red-800 inline-block text-white;
+      }
+      
+      .coresposicoesopcoes {
+        @apply absolute z-10 mt-2 w-56 bg-black shadow-md rounded-md transition-opacity duration-300 ease-in-out;
+      }
+      /* DROPDOWN */
+      /* CADASTRO */
+      .cadastropage{
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
+      }
+      /* CADASTRO */
 }
+

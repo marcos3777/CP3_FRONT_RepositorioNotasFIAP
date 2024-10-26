@@ -60,7 +60,7 @@ const CustomDropdown = ({ options, label, onSelect }: CustomDropdownProps) => {
 
 // Como usar o CustomDropdown
 export default function Page() {
-  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara'];
+  const nomes = ['Marcos Vinicius', 'Richardy Borges', 'Henrique Izzi', 'Pedro Bergara', 'Arthur Ramos dos Santos'];
 
   const [selectedName, setSelectedName] = useState('');
 
