@@ -153,7 +153,7 @@ export default function Page() {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`/api/delete/${id}`, {
+      const response = await fetch(`/api/base-route/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
