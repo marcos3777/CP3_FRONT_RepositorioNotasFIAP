@@ -189,5 +189,38 @@
         @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
       }
       /* CADASTRO */
+      /* EDIT */
+      .container-edit {
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
+      }
+      .form-edit {
+        @apply p-4 rounded shadow-md w-1/2 bg-transparent;
+      
+        & h1 {
+          @apply text-center text-2xl font-bold my-4 text-white;
+        }
+      }
+      .div-input-edit {
+        @apply mb-4;
+      
+        & label {
+          @apply text-white;
+        }
+      }
+      .select-custom {
+        @apply p-2 border rounded w-full bg-gray-400 bg-opacity-50;
+      }
+      
+      .select-custom:hover,
+      .select-custom:focus {
+        @apply bg-gray-500 border-gray-600;
+      }
+      
+      .select-custom option {
+        @apply text-white font-bold;
+      }
+
+      /* EDIT */
+
 }
 

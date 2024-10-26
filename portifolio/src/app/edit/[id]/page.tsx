@@ -23,7 +23,7 @@ const EditPage = () => {
 
   const [formData, setFormData] = useState<Data | null>(null);
 
-  const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro'];
+  const nomes = ['Marcos Vinicius', 'Richard', 'Heinrique', 'Pedro', 'Arthur Ramos dos Santos'];
   const provas = ['Checkpoint', 'Sprint', 'GlobalSolution'];
   const materias = [
     'ARTIFICIAL INTELLIGENCE AND CHATBOT',
@@ -82,12 +82,14 @@ const EditPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center bg-gray-200 min-h-screen">
-      <h1 className="text-2xl font-bold my-4">Editar Prova</h1>
-      <form
+    <div className="conteiner-home">
+      
+      <form 
         onSubmit={handleSubmit}
-        className="bg-white p-4 rounded shadow-md w-1/2"
+        className="p-4 rounded shadow-md w-1/2 bg-transparente"
       >
+        {/* bg-gradient-to-b from-gray-600 to-white backdrop-blur-lg */}
+        <h1 className="text-center text-2xl font-bold my-4 text-white">Editar Prova</h1>
         {/* Campo Nome */}
         <div className="mb-4">
           <label className="block mb-2">Nome</label>
@@ -95,7 +97,7 @@ const EditPage = () => {
             name="name"
             value={formData.name}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="p-2 border rounded w-full bg-gray-400 bg-opacity-50"
           >
             {nomes.map((nome) => (
               <option key={nome} value={nome}>
@@ -192,7 +194,7 @@ const EditPage = () => {
             name="semestre"
             value={formData.semestre}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="p-2 border rounded w-full bg-gray-400 bg-opacity-50"
           >
             <option value="1">1</option>
             <option value="2">2</option>
