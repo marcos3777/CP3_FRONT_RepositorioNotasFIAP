@@ -82,22 +82,21 @@ const EditPage = () => {
   }
 
   return (
-    <div className="conteiner-home">
+    <div className="container-edit">
       
       <form 
         onSubmit={handleSubmit}
-        className="p-4 rounded shadow-md w-1/2 bg-transparente"
+        className="form-edit"
       >
-        {/* bg-gradient-to-b from-gray-600 to-white backdrop-blur-lg */}
-        <h1 className="text-center text-2xl font-bold my-4 text-white">Editar Prova</h1>
+        <h1>Editar Prova</h1>
         {/* Campo Nome */}
-        <div className="mb-4">
-          <label className="block mb-2">Nome</label>
+        <div className="div-opcoes-form-edit">
+          <label>Nome</label>
           <select
             name="name"
             value={formData.name}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full bg-gray-400 bg-opacity-50"
+            className="entradas-form"
           >
             {nomes.map((nome) => (
               <option key={nome} value={nome}>
@@ -108,13 +107,13 @@ const EditPage = () => {
         </div>
 
         {/* Campo Prova */}
-        <div className="mb-4">
-          <label className="block mb-2">Prova</label>
+        <div className="div-opcoes-form-edit">
+          <label>Prova</label>
           <select
             name="tipo"
             value={formData.tipo}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
           >
             {provas.map((prova) => (
               <option key={prova} value={prova.toLowerCase()}>
@@ -125,13 +124,13 @@ const EditPage = () => {
         </div>
 
         {/* Campo Matéria */}
-        <div className="mb-4">
-          <label className="block mb-2">Matéria</label>
+        <div className="div-opcoes-form-edit">
+          <label>Matéria</label>
           <select
             name="materia"
             value={formData.materia}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
           >
             {materias.map((materia) => (
               <option key={materia} value={materia}>
@@ -142,59 +141,59 @@ const EditPage = () => {
         </div>
 
         {/* Outros campos */}
-        <div className="mb-4">
-          <label className="block mb-2">Título</label>
+        <div className="div-opcoes-form-edit">
+          <label>Título</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-2">Data</label>
+        <div className="div-opcoes-form-edit">
+          <label>Data</label>
           <input
             type="date"
             name="date"
             value={formData.date}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-2">Feedback</label>
+        <div className="div-opcoes-form-edit">
+          <label>Feedback</label>
           <textarea
             name="feedback"
             value={formData.feedback}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
           ></textarea>
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-2">Nota</label>
+        <div className="div-opcoes-form-edit">
+          <label>Nota</label>
           <input
             type="number"
             name="note"
             value={formData.note}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full"
+            className="entradas-form"
             min="0"
             max="10"
             step="0.1"
           />
         </div>
 
-        <div className="mb-4">
+        <div className="div-opcoes-form-edit">
           <label className="block mb-2">Semestre</label>
           <select
             name="semestre"
             value={formData.semestre}
             onChange={handleFormChange}
-            className="p-2 border rounded w-full bg-gray-400 bg-opacity-50"
+            className="entradas-form"
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -202,12 +201,12 @@ const EditPage = () => {
         </div>
 
         {/* Botões */}
-        <button type="submit" className="p-2 bg-green-500 text-white rounded">
+        <button type="submit" className="botao-submit">
           Salvar
         </button>
         <button
           type="button"
-          className="p-2 bg-gray-500 text-white rounded ml-2"
+          className="botao-cancelar"
           onClick={() => router.back()}
         >
           Cancelar

@@ -191,7 +191,7 @@
       /* CADASTRO */
       /* EDIT */
       .container-edit {
-        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-blue-800;
       }
       .form-edit {
         @apply p-4 rounded shadow-md w-1/2 bg-transparent;
@@ -200,24 +200,26 @@
           @apply text-center text-2xl font-bold my-4 text-white;
         }
       }
-      .div-input-edit {
+      .div-opcoes-form-edit {
         @apply mb-4;
       
         & label {
-          @apply text-white;
+          @apply text-white block mb-2  ;
         }
       }
-      .select-custom {
+      .entradas-form {
         @apply p-2 border rounded w-full bg-gray-400 bg-opacity-50;
-      }
       
-      .select-custom:hover,
-      .select-custom:focus {
-        @apply bg-gray-500 border-gray-600;
-      }
       
-      .select-custom option {
-        @apply text-white font-bold;
+        & option {
+         @apply text-black font-bold bg-gray-600;
+        }
+      }
+      .botao-submit{
+        @apply p-2 bg-black text-white rounded;
+      }
+      .botao-cancelar{
+        @apply p-2 bg-red-600 text-white rounded ml-2;
       }
 
       /* EDIT */
