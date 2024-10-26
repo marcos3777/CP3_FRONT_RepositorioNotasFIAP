@@ -50,7 +50,7 @@ const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps
 
       {/* Options */}
       {isOpen && (
-        <div className="coresposicoesopcoes coresposicoesopcoes-open">
+        <div className="coresposicoesopcoes">
           {options.map((option) => (
             <div
               key={option}
