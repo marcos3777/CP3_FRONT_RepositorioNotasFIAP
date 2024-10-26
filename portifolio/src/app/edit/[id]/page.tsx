@@ -188,7 +188,7 @@ const EditPage = () => {
         </div>
 
         <div className="div-opcoes-form-edit">
-          <label className="block mb-2">Semestre</label>
+          <label>Semestre</label>
           <select
             name="semestre"
             value={formData.semestre}
