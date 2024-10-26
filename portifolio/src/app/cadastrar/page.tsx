@@ -66,7 +66,7 @@ export default function CadastrarPage() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-200 min-h-screen p-8">
+    <div className="conteiner-home">
       <h1 className="text-2xl font-bold mb-4">Cadastrar Prova</h1>
       <form className="w-full max-w-md bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
         {/* Nome */}
