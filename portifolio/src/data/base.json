@@ -570,5 +570,49 @@
     "note": 8.6,
     "semestre": "1",
     "id": 52
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "cp1",
+    "date": "2024-03-25",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 53
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "cp3",
+    "date": "2024-05-20",
+    "feedback": "bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 54
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "sprint1",
+    "date": "2024-04-29",
+    "feedback": "bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 55
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint ",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "sprint2",
+    "date": "2024-05-29",
+    "feedback": "bom",
+    "note": 8.5,
+    "semestre": "1",
+    "id": 56
   }
 ]
