@@ -254,4 +254,17 @@
       /* EDIT */
 
 }
+.not-found-page {
+    @apply flex flex-col items-center justify-center
+     min-h-screen bg-gradient-to-b from-gray-950 to-red-800
+    text-white text-center p-8;
+& h1 {
+    @apply text-6xl font-bold mb-4;
+}       
+& h2 {
+     @apply text-3xl font-light mb-6;
+ } & p{
+    @apply text-lg font-light;
+}
 
+}
