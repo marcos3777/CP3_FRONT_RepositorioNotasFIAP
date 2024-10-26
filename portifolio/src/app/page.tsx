@@ -8,6 +8,8 @@ import imgRichardy from "@/public/richardyimage.jpg";
 import imgHenrique from "@/public/izziimage.jpg";
 import imgArthur from "@/public/arthurimage.jpg";
 import imgPedro from "@/public/pedroimage.jpg";
+
+
 interface CustomDropdownProps {
   options: string[];
   label: string;
@@ -37,10 +39,10 @@ const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps
   };
 
   return (
-    <div ref={dropdownRef} className="relative inline-block text-left mr-4">
+    <div ref={dropdownRef} className="dropdownnomes">
       {/* Label */}
       <p
-        className="cursor-pointer border-b border-dotted border-gray-500 inline-block text-white"
+        className="opcoesnomes"
         onClick={() => setIsOpen(!isOpen)}
       >
         {value || label}
@@ -48,11 +50,11 @@ const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps
 
       {/* Options */}
       {isOpen && (
-        <div className="absolute z-10 mt-2 w-56 bg-white shadow-md rounded-md">
+        <div className="coresposicoesopcoes coresposicoesopcoes-open">
           {options.map((option) => (
             <div
               key={option}
-              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              className="opcoeshover"
               onClick={() => handleSelect(option)}
             >
               {option}
