@@ -184,10 +184,39 @@
         @apply absolute z-10 mt-2 w-56 bg-black shadow-md rounded-md transition-opacity duration-300 ease-in-out;
       }
       /* DROPDOWN */
+
       /* CADASTRO */
       .cadastropage{
         @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
       }
+
+      .divopcadastro{
+        @apply mb-4;
+        & label{
+            @apply block text-white}
+        & select{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
+        }
+        & input{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
+        }
+        & textarea{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
+        }
+      }
+
+      .conteiner-home {
+        & h1{
+            @apply text-white text-2xl font-bold mb-4 text-center;}
+        & form {
+            @apply p-4 rounded shadow-md w-1/2 bg-transparent
+        }
+      }
+
+      .botaocadcss{ 
+        @apply w-full p-2 bg-white text-black rounded hover:bg-gray-600 hover:text-white
+      }
+
       /* CADASTRO */
 }
 

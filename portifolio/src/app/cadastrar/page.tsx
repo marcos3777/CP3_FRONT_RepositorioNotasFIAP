@@ -67,13 +67,12 @@ export default function CadastrarPage() {
 
   return (
     <div className="conteiner-home">
-      <h1 className="text-2xl font-bold mb-4">Cadastrar Prova</h1>
-      <form className="w-full max-w-md bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+      <h1>Cadastrar Prova</h1>
         {/* Nome */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Nome:</label>
+        <div className="divopcadastro">
+          <label>Nome:</label>
           <select
-            className="w-full p-2 border rounded"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
@@ -88,10 +87,9 @@ export default function CadastrarPage() {
         </div>
 
         {/* Tipo de Prova */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Tipo de Prova:</label>
+        <div className="divopcadastro">
+          <label>Tipo de Prova:</label>
           <select
-            className="w-full p-2 border rounded"
             value={formData.tipo}
             onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
             required
@@ -106,10 +104,9 @@ export default function CadastrarPage() {
         </div>
 
         {/* Matéria */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Matéria:</label>
+        <div className="divopcadastro">
+          <label >Matéria:</label>
           <select
-            className="w-full p-2 border rounded"
             value={formData.materia}
             onChange={(e) => setFormData({ ...formData, materia: e.target.value })}
             required
@@ -124,10 +121,9 @@ export default function CadastrarPage() {
         </div>
 
         {/* Semestre */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Semestre:</label>
+        <div className="divopcadastro">
+          <label >Semestre:</label>
           <select
-            className="w-full p-2 border rounded"
             value={formData.semestre}
             onChange={(e) => setFormData({ ...formData, semestre: e.target.value })}
             required
@@ -142,14 +138,13 @@ export default function CadastrarPage() {
         </div>
 
         {/* Nota */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Nota:</label>
+        <div className="divopcadastro">
+          <label >Nota:</label>
           <input
             type="number"
             min="0"
             max="10"
             step="0.1"
-            className="w-full p-2 border rounded"
             value={formData.note}
             onChange={(e) => setFormData({ ...formData, note: parseFloat(e.target.value) })}
             required
@@ -157,11 +152,10 @@ export default function CadastrarPage() {
         </div>
 
         {/* Título */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Título:</label>
+        <div className="divopcadastro">
+          <label>Título:</label>
           <input
             type="text"
-            className="w-full p-2 border rounded"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
@@ -169,11 +163,10 @@ export default function CadastrarPage() {
         </div>
 
         {/* Data */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Data:</label>
+        <div className="divopcadastro">
+          <label >Data:</label>
           <input
             type="date"
-            className="w-full p-2 border rounded"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
             required
@@ -181,21 +174,17 @@ export default function CadastrarPage() {
         </div>
 
         {/* Feedback */}
-        <div className="mb-4">
-          <label className="block text-gray-700">Feedback:</label>
+        <div className="divopcadastro">
+          <label>Feedback:</label>
           <textarea
-            className="w-full p-2 border rounded"
             value={formData.feedback}
             onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
           />
         </div>
 
         {/* Botão Submeter */}
-        <button
-          type="submit"
-          className="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
-          Cadastrar Prova
+        <button className="botaocadcss"
+          type="submit">Cadastrar Prova
         </button>
       </form>
     </div>
