@@ -166,21 +166,94 @@
     .participant-placeholder p {
         @apply text-center;
     }
-    
-        .not-found-page {
-            @apply flex flex-col items-center justify-center
-             min-h-screen bg-gradient-to-b from-gray-950 to-red-800
-            text-white text-center p-8;
-       & h1 {
-            @apply text-6xl font-bold mb-4;
-       }       
-       & h2 {
-            @apply text-3xl font-light mb-6;
+
+    /* DROPDOWN */
+
+    .dropdownnomes {
+        @apply relative inline-block text-left mr-4;
+      }
+      
+      .opcoeshover {
+        @apply px-4 py-2 hover:bg-red-700 cursor-pointer;
+      }
+      
+      .opcoesnomes {
+        @apply cursor-pointer border-b border-dotted border-red-800 inline-block text-white;
+      }
+      
+      .coresposicoesopcoes {
+        @apply absolute z-10 mt-2 w-56 bg-black shadow-md rounded-md transition-opacity duration-300 ease-in-out;
+      }
+      /* DROPDOWN */
+
+      /* CADASTRO */
+      .cadastropage{
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
+      }
+
+      .divopcadastro{
+        @apply mb-4;
+        & label{
+            @apply block text-white}
+        & select{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
         }
-        & p{
-            @apply text-lg font-light;
+        & input{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
         }
-        
-    }
+        & textarea{
+            @apply  w-full p-2 border border-black/70 rounded bg-black/70
+        }
+      }
+
+      .conteiner-home {
+        & h1{
+            @apply text-white text-2xl font-bold mb-4 text-center;}
+        & form {
+            @apply p-4 rounded shadow-md w-1/2 bg-transparent
+        }
+      }
+
+      .botaocadcss{ 
+        @apply w-full p-2 bg-white text-black rounded hover:bg-gray-600 hover:text-white
+      }
+
+      /* CADASTRO */
+      /* EDIT */
+      .container-edit {
+        @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800;
+      }
+      .form-edit {
+        @apply p-4 rounded shadow-md w-1/2 bg-transparent;
+      
+        & h1 {
+          @apply text-center text-2xl font-bold my-4 text-white;
+        }
+      }
+      .div-opcoes-form-edit {
+        @apply mb-4;
+      
+        & label {
+          @apply text-white block mb-2  ;
+        }
+      }
+      .entradas-form {
+        @apply p-2 border rounded w-full text-white bg-black bg-opacity-50;
+      
+      
+        & option {
+         @apply text-white font-bold bg-black;
+        }
+      }
+      .botao-submit{
+        @apply p-2 bg-black text-white rounded;
+      }
+      .botao-cancelar{
+        @apply p-2 bg-red-500 text-white rounded ml-2;
+      }
+
+      /* EDIT */
+
+
 }
 

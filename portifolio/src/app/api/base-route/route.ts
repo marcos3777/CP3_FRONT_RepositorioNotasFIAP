@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
-import { TipoLanche, TipoProva } from "@/types/types";
+import { TipoProva } from "@/types/types";
 
 export async function GET() {
 
