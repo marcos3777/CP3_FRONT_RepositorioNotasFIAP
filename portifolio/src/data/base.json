@@ -482,5 +482,137 @@
     "note": 10,
     "semestre": "2",
     "id": 44
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "cp1",
+    "date": "2024-04-19",
+    "feedback": "Muito bom",
+    "note": 9,
+    "semestre": "1",
+    "id": 45
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "cp2",
+    "date": "2024-05-03",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 46
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "Sprint 1",
+    "date": "2024-05-09",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 47
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "ARTIFICIAL INTELLIGENCE AND CHATBOT",
+    "title": "Sprint 2",
+    "date": "2024-04-19",
+    "feedback": "Muito bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 48
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "BUILDING RELATIONAL DATABASE",
+    "title": "CP1",
+    "date": "2024-04-01",
+    "feedback": "Muito bom",
+    "note": 9.5,
+    "semestre": "1",
+    "id": 49
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "BUILDING RELATIONAL DATABASE",
+    "title": "CP2",
+    "date": "2024-04-29",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 50
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "BUILDING RELATIONAL DATABASE",
+    "title": "Sprint 1",
+    "date": "2024-05-04",
+    "feedback": "Muito bom",
+    "note": 9,
+    "semestre": "1",
+    "id": 51
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint ",
+    "materia": "BUILDING RELATIONAL DATABASE",
+    "title": "Sprint 2",
+    "date": "2024-05-26",
+    "feedback": "bom",
+    "note": 8.6,
+    "semestre": "1",
+    "id": 52
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "cp1",
+    "date": "2024-03-25",
+    "feedback": "Muito bom",
+    "note": 10,
+    "semestre": "1",
+    "id": 53
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "checkpoint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "cp3",
+    "date": "2024-05-20",
+    "feedback": "bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 54
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "sprint1",
+    "date": "2024-04-29",
+    "feedback": "bom",
+    "note": 8,
+    "semestre": "1",
+    "id": 55
+  },
+  {
+    "name": "Pedro Bergara",
+    "tipo": "Sprint ",
+    "materia": "COMPUTATIONAL THINKING USING PYTHON",
+    "title": "sprint2",
+    "date": "2024-05-29",
+    "feedback": "bom",
+    "note": 8.5,
+    "semestre": "1",
+    "id": 56
   }
 ]
