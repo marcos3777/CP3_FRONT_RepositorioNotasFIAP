@@ -144,5 +144,4 @@ Siga os passos abaixo para executar o projeto localmente:
 
 ---
 
-Esperamos que este projeto seja útil e agradecemos a oportunidade de aplicar nossos conhecimentos adquiridos ao longo do semestre.
 
