@@ -41,11 +41,11 @@ O **Sistema de Notas** é uma aplicação web que permite visualizar e gerenciar
 
 Os seguintes membros contribuíram para este projeto:
 
-- Marcos Vinicius
-- Richardy Borges
-- Henrique Izzi
-- Pedro Bergara
-- Arthur Ramos dos Santos
+- Marcos Vinicius 557252
+- Richardy Borges 557883
+- Henrique Izzi 555413
+- Pedro Bergara 556639
+- Arthur Ramos dos Santos 558798
 
 </details>
 
