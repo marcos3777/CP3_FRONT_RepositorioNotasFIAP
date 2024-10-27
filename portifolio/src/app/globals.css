@@ -28,10 +28,10 @@
         @apply max-w-20 hover:max-w-24 hover:transition-transform duration-300 ease-in-out;
     }
 
-    /* Styling the Home Page */
+    /*Pagina Home */
     .conteiner-home{
         @apply flex flex-col items-center min-h-screen bg-gradient-to-b from-gray-950 to-red-800 backdrop-blur-lg;
-        color: #ffffff; /* Ensure all text inside has light color */
+        color: #ffffff; 
     }
     
     .container-botao{
@@ -67,7 +67,7 @@
         } 
     }
 
-    /* Styling the Main Content */
+    /* Conteudo da main */
     .container-principal{
         @apply flex flex-col md:flex-row w-full justify-around p-8;
 
@@ -104,7 +104,7 @@
         }
     }
 
-    /* Header Styling */
+    /* Header */
     .header {
         @apply flex items-start w-full p-4;
 
@@ -121,7 +121,7 @@
         }
 
         & .labels {
-            @apply flex flex-col ml-4 mt-2; /* Adjusted to stack labels vertically */
+            @apply flex flex-col ml-4 mt-2; 
         }
 
         & h2 {
@@ -129,11 +129,11 @@
         }
 
         & p {
-            @apply text-lg text-white mt-2; /* Added margin-top for spacing */
+            @apply text-lg text-white mt-2; 
         }
 
         & .button-group {
-            @apply flex gap-2 ml-auto; /* Moved buttons to the right */
+            @apply flex gap-2 ml-auto; 
         }
 
         & .butao-cad {
@@ -141,7 +141,7 @@
         }
     }
 
-    /* Custom Dropdown Styling */
+    /* Custom Dropdown*/
     .labels .custom-dropdown {
         @apply relative inline-block text-left mt-2;
     }
@@ -151,14 +151,13 @@
     }
 
     .labels .custom-dropdown-options {
-        @apply absolute z-10 mt-2 w-56 bg-gray-800 shadow-md rounded-md; /* Changed background color to gray */
+        @apply absolute z-10 mt-2 w-56 bg-gray-800 shadow-md rounded-md; 
     }
 
     .labels .custom-dropdown-option {
-        @apply px-4 py-2 hover:bg-gray-700 cursor-pointer text-white; /* White text */
-    }
+        @apply px-4 py-2 hover:bg-gray-700 cursor-pointer text-white; 
 
-    /* Adjust text color for better legibility */
+    
     .text-white {
         color: #ffffff;
     }
@@ -167,7 +166,7 @@
         color: #d1d5db;
     }
 
-    /* Participant Placeholder Text */
+    /* Participant Placeholder*/
     .participant-placeholder p {
         @apply text-center;
     }

@@ -159,7 +159,6 @@ export default function Page() {
         method: 'DELETE',
       });
       if (response.ok) {
-        // Update the data after deletion
         fetchData();
       } else {
         console.error('Failed to delete the item');
@@ -181,7 +180,6 @@ export default function Page() {
 
   return (
     <div className="conteiner-home">
-      {/* Show normal dropdowns only if selections are incomplete */}
       {(!selectedName || !selectedProva || !selectedMateria) && (
         <>
           {/* Dropdowns */}
@@ -235,7 +233,7 @@ export default function Page() {
             </button>
           </div>
 
-          {/* Welcome content */}
+          {/* Conteudo tela inicial */}
           <div className="conteiner-welcome">
             <h1 className="welcome-text">Bem-vindo ao Sistema de Notas</h1>
             <p className="item-p1">
@@ -248,10 +246,10 @@ export default function Page() {
         </>
       )}
 
-      {/* Show content when all selections are made */}
+      {/* Conteudo depois q tudo foi selecionado */}
       {selectedName && selectedProva && selectedMateria && (
         <>
-          {/* Header with image, custom dropdowns, and buttons */}
+          {/* Header e image, custom dropdowns, e o buttons */}
           <div className="header">
             {/* Image */}
             <div className="image-container">
@@ -269,7 +267,7 @@ export default function Page() {
                 </div>
               )}
             </div>
-            {/* Custom Dropdowns for Nome, Prova, and Matéria */}
+            {/* Header e image, custom dropdowns, e o buttons */}
             <div className="labels">
               <CustomDropdown
                 options={nomes}
@@ -305,7 +303,6 @@ export default function Page() {
               </button>
             </div>
           </div>
-          {/* Rest of the content */}
           <div className="container-principal">
             {/* Semestre 1 */}
             <div className="conteudo-semestr">
