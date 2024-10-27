@@ -1,14 +1,15 @@
+// Page.tsx
+
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MdModeEdit, MdDelete } from "react-icons/md";
+import { MdModeEdit, MdDelete, MdArrowDropDown } from "react-icons/md"; // Import the arrow icon
 import imgMarcos from "@/public/marcosimage.jpg";
 import imgRichardy from "@/public/richardyimage.jpg";
 import imgHenrique from "@/public/izziimage.jpg";
 import imgArthur from "@/public/arthurimage.jpg";
 import imgPedro from "@/public/pedroimage.jpg";
-
 
 interface CustomDropdownProps {
   options: string[];
@@ -42,10 +43,11 @@ const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps
     <div ref={dropdownRef} className="dropdownnomes">
       {/* Label */}
       <p
-        className="opcoesnomes"
+        className="opcoesnomes flex items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         {value || label}
+        <MdArrowDropDown className="ml-2" />
       </p>
 
       {/* Options */}
