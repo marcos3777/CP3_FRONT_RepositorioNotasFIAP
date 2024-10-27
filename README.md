@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para a matéria de Front-End como prova do final do 2º semestre.
 
-Site deployado na Vercel: [https://portifolio-blue-psi-68.vercel.app/](https://portifolio-blue-psi-68.vercel.app/)
+Deploy do site na Vercel: [https://portifolio-blue-psi-68.vercel.app/](https://portifolio-blue-psi-68.vercel.app/)
 
 <details>
   <summary><strong>Índice</strong></summary>
