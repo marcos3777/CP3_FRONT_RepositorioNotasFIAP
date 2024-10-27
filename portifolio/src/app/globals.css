@@ -35,14 +35,14 @@
     }
     
     .container-botao{
-        @apply flex justify-between w-full p-4 bg-transparent;
+        @apply flex flex-col items-center md:flex-row md:justify-between w-full p-4 bg-transparent;
 
         & .butao{
-            @apply p-2 border rounded bg-black text-white hover:bg-gray-950;
+            @apply p-2 border rounded bg-black text-white hover:bg-gray-950 mt-2 md:mt-0 md:mr-2;
         }
 
         & .butao-cad{
-            @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2;
+            @apply p-2 border-l-2 border-black border-opacity-5 rounded bg-black text-white hover:bg-gray-950 hover:border-red-600 hover:border-l-2 mt-2 md:mt-0;
         }
     }
 
@@ -64,10 +64,10 @@
 
     /* Styling the Main Content */
     .container-principal{
-        @apply flex w-full justify-around p-8;
+        @apply flex flex-col md:flex-row w-full justify-around p-8;
 
         & .conteudo-semestr{
-            @apply bg-white/30 backdrop-blur-md p-4 pt-5 rounded shadow-md w-5/12;
+            @apply bg-white/30 backdrop-blur-md p-4 pt-5 rounded shadow-md w-full md:w-5/12;
         }
 
         & .conteudo-semestr h2{
@@ -101,7 +101,7 @@
 
     /* Header Styling */
     .header {
-        @apply flex items-start w-full p-4;
+        @apply flex flex-col items-center md:flex-row md:items-start w-full p-4;
 
         & .image-container {
             @apply w-24 h-24 flex-shrink-0;
@@ -116,7 +116,11 @@
         }
 
         & .labels {
-            @apply flex flex-col ml-4 mt-2; /* Adjusted to stack labels vertically */
+            @apply flex flex-col md:flex-row md:items-center md:ml-4 mt-2;
+
+            & > *:not(:last-child) {
+                @apply mb-2 md:mb-0 md:mr-4;
+            }
         }
 
         & h2 {
@@ -128,7 +132,7 @@
         }
 
         & .button-group {
-            @apply flex gap-2 ml-auto; /* Moved buttons to the right */
+            @apply flex gap-2 mt-4 md:mt-0 md:ml-auto; /* Adjust margins for responsiveness */
         }
 
         & .butao-cad {
