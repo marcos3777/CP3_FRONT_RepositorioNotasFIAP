@@ -155,7 +155,11 @@
     }
 
     .labels .custom-dropdown-option {
-        @apply px-4 py-2 hover:bg-gray-700 cursor-pointer text-white; 
+        @apply px-4 py-2 hover:bg-gray-700 cursor-pointer text-white;
+        
+    }
+
+        
 
     
     .text-white {
@@ -170,6 +174,10 @@
     .participant-placeholder p {
         @apply text-center;
     }
+
+
+
+
     /* DROPDOWN */
 
     .dropdownnomes {
@@ -258,6 +266,8 @@
       /* EDIT */
 
 }
+
+
 .not-found-page {
     @apply flex flex-col items-center justify-center
      min-h-screen bg-gradient-to-b from-gray-950 to-red-800
@@ -272,3 +282,6 @@
 }
 
 }
+
+
+
