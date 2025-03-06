@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MdModeEdit, MdDelete, MdArrowDropDown } from "react-icons/md"; // Import the arrow icon
+import { MdModeEdit, MdDelete, MdArrowDropDown, MdAdd, MdArrowBack } from "react-icons/md";
 import imgMarcos from "@/public/marcosimage.jpg";
 import imgRichardy from "@/public/richardyimage.jpg";
 import imgHenrique from "@/public/izziimage.jpg";
@@ -86,6 +86,7 @@ export default function Page() {
   const [selectedMateria, setSelectedMateria] = useState('');
   const [semestre1Data, setSemestre1Data] = useState<Data[]>([]);
   const [semestre2Data, setSemestre2Data] = useState<Data[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const participants = [
     {
@@ -122,26 +123,35 @@ export default function Page() {
   ];
 
   const fetchData = async () => {
-    const response = await fetch('/api/base-route');
-    const data: Data[] = await response.json();
+    if (!selectedName || !selectedProva || !selectedMateria) return;
+    
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/base-route');
+      const data: Data[] = await response.json();
 
-    const semestre1 = data.filter(
-      (item) =>
-        item.name === selectedName &&
-        item.tipo === selectedProva.toLowerCase() &&
-        item.materia === selectedMateria &&
-        item.semestre === '1'
-    );
-    const semestre2 = data.filter(
-      (item) =>
-        item.name === selectedName &&
-        item.tipo === selectedProva.toLowerCase() &&
-        item.materia === selectedMateria &&
-        item.semestre === '2'
-    );
+      const semestre1 = data.filter(
+        (item) =>
+          item.name === selectedName &&
+          item.tipo === selectedProva.toLowerCase() &&
+          item.materia === selectedMateria &&
+          item.semestre === '1'
+      );
+      const semestre2 = data.filter(
+        (item) =>
+          item.name === selectedName &&
+          item.tipo === selectedProva.toLowerCase() &&
+          item.materia === selectedMateria &&
+          item.semestre === '2'
+      );
 
-    setSemestre1Data(semestre1);
-    setSemestre2Data(semestre2);
+      setSemestre1Data(semestre1);
+      setSemestre2Data(semestre2);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -184,53 +194,65 @@ export default function Page() {
         <>
           {/* Dropdowns */}
           <div className="container-botao">
-            <select
-              className="butao"
-              value={selectedName}
-              onChange={(e) => setSelectedName(e.target.value)}
-            >
-              <option value="">Nome</option>
-              {nomes.map((nome) => (
-                <option key={nome} value={nome}>
-                  {nome}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                className="butao appearance-none"
+                value={selectedName}
+                onChange={(e) => setSelectedName(e.target.value)}
+              >
+                <option value="">Selecione um Nome</option>
+                {nomes.map((nome) => (
+                  <option key={nome} value={nome}>
+                    {nome}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                <MdArrowDropDown size={20} />
+              </div>
+            </div>
 
-            <select
-              className="butao"
-              value={selectedProva}
-              onChange={(e) => setSelectedProva(e.target.value)}
-            >
-              <option value="">Provas</option>
-              {provas.map((prova) => (
-                <option key={prova} value={prova}>
-                  {prova}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                className="butao appearance-none"
+                value={selectedProva}
+                onChange={(e) => setSelectedProva(e.target.value)}
+              >
+                <option value="">Selecione uma Prova</option>
+                {provas.map((prova) => (
+                  <option key={prova} value={prova}>
+                    {prova}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                <MdArrowDropDown size={20} />
+              </div>
+            </div>
 
-            <select
-              className="butao"
-              value={selectedMateria}
-              onChange={(e) => setSelectedMateria(e.target.value)}
-            >
-              <option value="">Matéria</option>
-              {materias.map((materia) => (
-                <option key={materia} value={materia}>
-                  {materia}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                className="butao appearance-none"
+                value={selectedMateria}
+                onChange={(e) => setSelectedMateria(e.target.value)}
+              >
+                <option value="">Selecione uma Matéria</option>
+                {materias.map((materia) => (
+                  <option key={materia} value={materia}>
+                    {materia}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                <MdArrowDropDown size={20} />
+              </div>
+            </div>
+            
             {/* Botão Cadastrar */}
-            <button
-              className="butao-cad"
-              onClick={() => {
-                window.location.href = '/cadastrar';
-              }}
-            >
-              Cadastrar
-            </button>
+            <Link href="/cadastrar" className="butao-cad flex items-center justify-center">
+              <MdAdd className="mr-2" size={20} />
+              Cadastrar Nota
+            </Link>
           </div>
 
           {/* Conteudo tela inicial */}
@@ -241,7 +263,26 @@ export default function Page() {
               <strong>Nome</strong>, <strong>Prova</strong> e{' '}
               <strong>Matéria</strong> nos menus acima.
             </p>
-            <p className="item-p2">Aplicação ainda em desenvolvimento.</p>
+            <p className="item-p2">Aplicação desenvolvida pelos alunos da FIAP.</p>
+            
+            {/* Participantes */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+              {participants.map((participant) => (
+                <div key={participant.name} className="bg-gray-800/50 p-4 rounded-lg shadow-md border border-gray-700 flex flex-col items-center hover:border-red-600 transition-colors duration-300">
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-600 mb-3">
+                    <Image 
+                      src={participant.image} 
+                      alt={participant.name} 
+                      width={80} 
+                      height={80} 
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <h3 className="text-white font-medium text-lg">{participant.name}</h3>
+                  <p className="text-gray-400 text-sm mt-1">Aluno FIAP</p>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       )}
@@ -249,117 +290,102 @@ export default function Page() {
       {/* Conteudo depois q tudo foi selecionado */}
       {selectedName && selectedProva && selectedMateria && (
         <>
-          {/* Header e image, custom dropdowns, e o buttons */}
+          {/* Header */}
           <div className="header">
-            {/* Image */}
             <div className="image-container">
-              {participant?.image ? (
+              {participant ? (
                 <Image
                   src={participant.image}
                   alt={participant.name}
-                  className="participant-image rounded-full"
                   width={96}
                   height={96}
+                  className="participant-image"
                 />
               ) : (
                 <div className="participant-placeholder">
-                  <p>Imagem não disponível</p>
+                  <p>{selectedName.charAt(0)}</p>
                 </div>
               )}
             </div>
-            {/* Header e image, custom dropdowns, e o buttons */}
+
             <div className="labels">
-              <CustomDropdown
-                options={nomes}
-                label="Selecione um nome"
-                value={selectedName}
-                onSelect={(value) => setSelectedName(value)}
-              />
-              <CustomDropdown
-                options={provas}
-                label="Selecione uma prova"
-                value={selectedProva}
-                onSelect={(value) => setSelectedProva(value)}
-              />
-              <CustomDropdown
-                options={materias}
-                label="Selecione uma matéria"
-                value={selectedMateria}
-                onSelect={(value) => setSelectedMateria(value)}
-              />
-            </div>
-            {/* Buttons */}
-            <div className="button-group">
-              <button className="butao-cad" onClick={handleBack}>
-                Voltar
-              </button>
-              <button
-                className="butao-cad"
-                onClick={() => {
-                  window.location.href = '/cadastrar';
-                }}
-              >
-                Cadastrar
-              </button>
-            </div>
-          </div>
-          <div className="container-principal">
-            {/* Semestre 1 */}
-            <div className="conteudo-semestr">
-              <h2>Semestre 1</h2>
-              {semestre1Data.length > 0 ? (
-                semestre1Data.map((item) => (
-                  <div key={item.id} className="caixa-semestr">
-                    <Link href={`/edit/${item.id}`} className="edit">
-                      <MdModeEdit />
-                    </Link>
-                    <button
-                      className="delete"
-                      onClick={() => handleDelete(item.id)}
-                    >
-                      <MdDelete />
-                    </button>
-                    <h3 className="titulo-item-semestr">{item.title}</h3>
-                    <p>{item.date}</p>
-                    <p>Feedback: {item.feedback}</p>
-                    <h4>Nota: {item.note}</h4>
-                  </div>
-                ))
-              ) : (
-                <p className="text-center text-gray-300">
-                  Nenhum dado disponível para o Semestre 1.
-                </p>
-              )}
+              <h2>{selectedName}</h2>
+              <p>
+                {selectedProva} - {selectedMateria}
+              </p>
             </div>
 
-            {/* Semestre 2 */}
-            <div className="conteudo-semestr">
-              <h2>Semestre 2</h2>
-              {semestre2Data.length > 0 ? (
-                semestre2Data.map((item) => (
-                  <div key={item.id} className="caixa-semestr">
-                    <Link href={`/edit/${item.id}`} className="edit">
-                      <MdModeEdit />
-                    </Link>
-                    <button
-                      className="delete"
-                      onClick={() => handleDelete(item.id)}
-                    >
-                      <MdDelete />
-                    </button>
-                    <h3 className="titulo-item-semestr">{item.title}</h3>
-                    <p>{item.date}</p>
-                    <p>Feedback: {item.feedback}</p>
-                    <h4>Nota: {item.note}</h4>
-                  </div>
-                ))
-              ) : (
-                <p className="text-center text-gray-300">
-                  Nenhum dado disponível para o Semestre 2.
-                </p>
-              )}
+            <div className="button-group">
+              <button onClick={handleBack} className="butao-cad flex items-center">
+                <MdArrowBack className="mr-2" />
+                Voltar
+              </button>
+              <Link href="/cadastrar" className="butao-cad flex items-center">
+                <MdAdd className="mr-2" />
+                Cadastrar
+              </Link>
             </div>
           </div>
+
+          {isLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
+            </div>
+          ) : (
+            <div className="container-principal">
+              {/* Semestre 1 */}
+              <div className="conteudo-semestr">
+                <h2>Semestre 1</h2>
+                {semestre1Data.length === 0 ? (
+                  <div className="text-center py-8 text-gray-400">
+                    Nenhum dado encontrado para o primeiro semestre.
+                  </div>
+                ) : (
+                  semestre1Data.map((item) => (
+                    <div key={item.id} className="caixa-semestr">
+                      <h3 className="titulo-item-semestr">{item.title}</h3>
+                      <p>Data: {item.date}</p>
+                      <p>Feedback: {item.feedback}</p>
+                      <h4>Nota: {item.note}</h4>
+                      <Link href={`/edit/${item.id}`}>
+                        <MdModeEdit className="edit" />
+                      </Link>
+                      <MdDelete
+                        className="delete"
+                        onClick={() => handleDelete(item.id)}
+                      />
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {/* Semestre 2 */}
+              <div className="conteudo-semestr">
+                <h2>Semestre 2</h2>
+                {semestre2Data.length === 0 ? (
+                  <div className="text-center py-8 text-gray-400">
+                    Nenhum dado encontrado para o segundo semestre.
+                  </div>
+                ) : (
+                  semestre2Data.map((item) => (
+                    <div key={item.id} className="caixa-semestr">
+                      <h3 className="titulo-item-semestr">{item.title}</h3>
+                      <p>Data: {item.date}</p>
+                      <p>Feedback: {item.feedback}</p>
+                      <h4>Nota: {item.note}</h4>
+                      <Link href={`/edit/${item.id}`}>
+                        <MdModeEdit className="edit" />
+                      </Link>
+                      <MdDelete
+                        className="delete"
+                        onClick={() => handleDelete(item.id)}
+                      />
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>
