@@ -11,63 +11,6 @@ import imgHenrique from "@/public/izziimage.jpg";
 import imgArthur from "@/public/arthurimage.jpg";
 import imgPedro from "@/public/pedroimage.jpg";
 
-interface CustomDropdownProps {
-  options: string[];
-  label: string;
-  value: string;
-  onSelect: (value: string) => void;
-}
-
-const CustomDropdown = ({ options, label, value, onSelect }: CustomDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [dropdownRef]);
-
-  const handleSelect = (option: string) => {
-    setIsOpen(false);
-    onSelect(option);
-  };
-
-  return (
-    <div ref={dropdownRef} className="dropdownnomes">
-      {/* Label */}
-      <p
-        className="opcoesnomes flex items-center"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {value || label}
-        <MdArrowDropDown className="ml-2" />
-      </p>
-
-      {/* Options */}
-      {isOpen && (
-        <div className="coresposicoesopcoes">
-          {options.map((option) => (
-            <div
-              key={option}
-              className="opcoeshover"
-              onClick={() => handleSelect(option)}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
 export default function Page() {
   interface Data {
     id: number;
@@ -158,7 +101,9 @@ export default function Page() {
     if (selectedName && selectedProva && selectedMateria) {
       fetchData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedName, selectedProva, selectedMateria]);
+  // Added eslint-disable comment to suppress the warning
 
   const handleDelete = async (id: number) => {
     const confirmDelete = confirm('Tem certeza que deseja deletar este item?');
