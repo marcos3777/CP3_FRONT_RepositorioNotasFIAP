@@ -1,7 +1,7 @@
 // Page.tsx
 
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MdModeEdit, MdDelete, MdArrowDropDown, MdAdd, MdArrowBack } from "react-icons/md";
@@ -103,7 +103,6 @@ export default function Page() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedName, selectedProva, selectedMateria]);
-  // Added eslint-disable comment to suppress the warning
 
   const handleDelete = async (id: number) => {
     const confirmDelete = confirm('Tem certeza que deseja deletar este item?');
